@@ -2,4 +2,9 @@
     <string name="app_name">Rurapp</string>
     <string name="user">User</string>
     <string name="iniciar">button</string>
+    <string name="todo">TODO</string>
+    <string name="personal">personal</string>
+    <string name="fincas">fincas</string>
+    <string name="actividades">actividades</string>
+    <string name="btn_enviar">enviar</string>
 </resources>
