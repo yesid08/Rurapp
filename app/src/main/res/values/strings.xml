@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Rurapp</string>
+    <string name="user">User</string>
+    <string name="iniciar">button</string>
 </resources>
