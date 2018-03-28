@@ -10,7 +10,7 @@ public class Finca {
     private String nombre;
     private double latitud;
     private double longitud;
-    private String descripción;
+    private String descripcion;
     private Bitmap foto;
 
     /**
@@ -18,14 +18,14 @@ public class Finca {
      * @param nombre : el nombre de la finca a la que se quiere hacer referencia.
      * @param latitud: coordenada geográfica de la finca.
      * @param longitud: Coordenada geográfica de la finca.
-     * @param descripción: Descripción de la finca.
+     * @param descripcion: Descripción de la finca.
      * @param foto: Bitmap que contiene la foto de la finca.
     */
-    public Finca(String nombre, double latitud, double longitud, String descripción, Bitmap foto) {
+    public Finca(String nombre, double latitud, double longitud, String descripcion, Bitmap foto) {
         this.nombre = nombre;
         this.latitud = latitud;
         this.longitud = longitud;
-        this.descripción = descripción;
+        this.descripcion = descripcion;
         this.foto = foto;
     }
 
@@ -36,7 +36,7 @@ public class Finca {
         this.nombre = "";
         this.latitud = 0;
         this.longitud = 0;
-        this.descripción = "";
+        this.descripcion = "";
         this.foto =  null;
     }
 
@@ -45,7 +45,9 @@ public class Finca {
      * Método que devuelve el nombre de la finca.
      * @return El nombre de la finca a la que se hace referencia.
      */
-    public String getNombre() { return nombre; }
+    public String getNombre() {
+        return nombre;
+    }
 
     /**
      * @author : Yesid A Gutierrez
@@ -94,20 +96,20 @@ public class Finca {
      * Método que devuelve una descripción de la finca a la que se hace referencia.
      * @return La descricpción de la finca.
      */
-    public String getDescripción() {
-        return descripción;
+    public String getDescripcion() {
+        return descripcion;
     }
 
     /**
      * @author : Yesid A Gutierrez
      * Método que actualiza la descripción de la finca a la que se hace referencia.
      */
-    public void setDescripción(String descripción) {
-        this.descripción = descripción;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     /**
-     * @author: Yesid A Gutierrez
+     * @author : Yesid A Gutierrez
      * Método que devuelve la foto de la finca a la que se hace referencia.
      * @return La foto de la finca.
      */
@@ -116,9 +118,8 @@ public class Finca {
     }
 
     /**
-     * @author: Yesid A Gutierrez
+     * @author : Yesid A Gutierrez
      * Método que actualiza la foto de la finca a la que se hace referencia.
-     * @return La foto de la finca.
      */
     public void setFoto(Bitmap foto) {
         this.foto = foto;

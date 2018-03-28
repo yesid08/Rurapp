@@ -5,9 +5,7 @@ package com.desarrollo.grupo2.rurapp;
  * @author : Franklin Sierra.
  * Clase persona para la aplicacion Rurapp
  */
-
 public class Persona {
-
 
     private String PrimerNombre;
     private String SegundoNombre;
@@ -26,21 +24,21 @@ public class Persona {
      * @param salud: EPS de la persona
      * @param celular: numero de celular de la persona
      */
-
-    public Persona(String primerNombre, String segundoNombre, String primerApelllido, String segundoApellido, String nacimiento, String salud, String celular) {
-        PrimerNombre = primerNombre;
-        SegundoNombre = segundoNombre;
-        PrimerApelllido = primerApelllido;
-        SegundoApellido = segundoApellido;
-        Nacimiento = nacimiento;
-        Salud = salud;
-        Celular = celular;
+    public Persona(String primerNombre, String segundoNombre, String primerApelllido, String segundoApellido,
+                   String nacimiento, String salud, String celular) {
+        this.PrimerNombre = primerNombre;
+        this.SegundoNombre = segundoNombre;
+        this.PrimerApelllido = primerApelllido;
+        this.SegundoApellido = segundoApellido;
+        this.Nacimiento = nacimiento;
+        this.Salud = salud;
+        this.Celular = celular;
     }
+
     /**
      * @author : Franklin Sierra.
      * Metodo constructor sin parametros
      * */
-
     public Persona(){
         this.PrimerNombre="";
         this.SegundoNombre="";
@@ -64,7 +62,6 @@ public class Persona {
      * @author : Franklin Sierra.
      * Metodo para actualizar el primer segundo de la persona
      **/
-
     public void setPrimerNombre(String primerNombre) {
         PrimerNombre = primerNombre;
     }
@@ -74,17 +71,14 @@ public class Persona {
      * Metodo para obtener el segundo nombre de la persona
      * @return segundo nombre
      * */
-
     public String getSegundoNombre() {
         return SegundoNombre;
     }
-
 
     /**
      * @author : Franklin Sierra.
      * Metodo para actualizar el segundo nombre de la persona
      * */
-
     public void setSegundoNombre(String segundoNombre) {
         SegundoNombre = segundoNombre;
     }
@@ -93,7 +87,6 @@ public class Persona {
      * Metodo para obtener el primer apellido de la persona
      * @return primer apellido
      * */
-
     public String getPrimerApelllido() {
         return PrimerApelllido;
     }
@@ -101,7 +94,6 @@ public class Persona {
     /**@author : Franklin Sierra.
      * Metodo para actualizar el primer apellido de la persona
      * */
-
     public void setPrimerApelllido(String primerApelllido) {
         PrimerApelllido = primerApelllido;
     }
@@ -110,7 +102,6 @@ public class Persona {
      * Metodo para obtener el segundo apellido de la persona
      * @return segundo apellido
      * */
-
     public String getSegundoApellido() {
         return SegundoApellido;
     }
@@ -118,7 +109,6 @@ public class Persona {
     /**@author : Franklin Sierra.
      * Metodo para actualizar el segundo apellido de la persona
      * */
-
     public void setSegundoApellido(String segundoApellido) {
         SegundoApellido = segundoApellido;
     }
@@ -127,7 +117,6 @@ public class Persona {
      * Metodo para obtener la fecha de nacimiento de la persona
      * @return fecha de nacimiento
      * */
-
     public String getNacimiento() {
         return Nacimiento;
     }
@@ -135,7 +124,6 @@ public class Persona {
     /**@author : Franklin Sierra.
      * Metodo para actualizar la fecha de nacimiento de la persona
      * */
-
     public void setNacimiento(String nacimiento) {
         Nacimiento = nacimiento;
     }
@@ -144,7 +132,6 @@ public class Persona {
      * Metodo para obtener EPS de la persona
      * @return EPS
      * */
-
     public String getSalud() {
         return Salud;
     }
@@ -152,7 +139,6 @@ public class Persona {
     /**@author : Franklin Sierra.
      * Metodo para actualizar la EPS de la persona
      * */
-
     public void setSalud(String salud) {
         Salud = salud;
     }
@@ -161,7 +147,6 @@ public class Persona {
      * Metodo para obtener el numero de celular de la persona
      * @return celular
      * */
-
     public String getCelular() {
         return Celular;
     }
@@ -169,7 +154,6 @@ public class Persona {
     /**@author : Franklin Sierra.
      * Metodo para actualizar el celular de la persona
      * */
-
     public void setCelular(String celular) {
         Celular = celular;
     }
