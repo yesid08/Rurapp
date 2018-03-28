@@ -3,7 +3,7 @@ package com.desarrollo.grupo2.rurapp;
 import android.graphics.Bitmap;
 /**
  * @author : Yesid A Gutierrez
-    *Clase Finca para la aplicación Rurapp
+ *Clase Finca para la aplicación Rurapp
  */
 public class Finca {
 
