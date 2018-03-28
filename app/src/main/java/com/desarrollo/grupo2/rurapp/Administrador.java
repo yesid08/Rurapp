@@ -27,6 +27,11 @@ public class Administrador extends Persona {
         this.clave = clave;
     }
 
+    /**
+     * @author Franklin Sierra
+     * @param correo : correo del admin
+     * @param clave : clave del respectivo correo
+     * */
     public Administrador(String correo, String clave){
         super();
         this.correo=correo;
