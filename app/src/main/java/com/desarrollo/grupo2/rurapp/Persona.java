@@ -1,5 +1,7 @@
 package com.desarrollo.grupo2.rurapp;
 
+import java.util.Date;
+
 /**
  * Created by FRANKLINSIERRA on 27/03/2018.
  * @author : Franklin Sierra.
@@ -7,32 +9,32 @@ package com.desarrollo.grupo2.rurapp;
  */
 public class Persona {
 
-    private String PrimerNombre;
-    private String SegundoNombre;
-    private String PrimerApelllido;
-    private String SegundoApellido;
-    private String Nacimiento;
-    private String Salud;
-    private String Celular;
+    private String primerNombre;
+    private String segundoNombre;
+    private String primerApelllido;
+    private String segundoApellido;
+    private Date fechaNacimiento;
+    private String salud;
+    private String celular;
 
     /**
      * @param primerNombre: primer nombre de la persona
      * @param segundoNombre: segundo nombre de la persona
      * @param primerApelllido: primer apellido de la persona
      * @param segundoApellido: segundo apellido de la persona
-     * @param nacimiento: fecha de nacimiento de la persona
+     * @param fechaNacimiento: fecha de nacimiento de la persona
      * @param salud: EPS de la persona
      * @param celular: numero de celular de la persona
      */
     public Persona(String primerNombre, String segundoNombre, String primerApelllido, String segundoApellido,
-                   String nacimiento, String salud, String celular) {
-        this.PrimerNombre = primerNombre;
-        this.SegundoNombre = segundoNombre;
-        this.PrimerApelllido = primerApelllido;
-        this.SegundoApellido = segundoApellido;
-        this.Nacimiento = nacimiento;
-        this.Salud = salud;
-        this.Celular = celular;
+                   Date fechaNacimiento, String salud, String celular) {
+        this.primerNombre = primerNombre;
+        this.segundoNombre = segundoNombre;
+        this.primerApelllido = primerApelllido;
+        this.segundoApellido = segundoApellido;
+        this.fechaNacimiento = fechaNacimiento;
+        this.salud = salud;
+        this.celular = celular;
     }
 
     /**
@@ -40,13 +42,13 @@ public class Persona {
      * Metodo constructor sin parametros
      * */
     public Persona(){
-        this.PrimerNombre="";
-        this.SegundoNombre="";
-        this.PrimerApelllido="";
-        this.SegundoApellido="";
-        this.Nacimiento=null;
-        this.Salud="";
-        this.Celular=null;
+        this.primerNombre="";
+        this.segundoNombre="";
+        this.primerApelllido="";
+        this.segundoApellido="";
+        this.fechaNacimiento=new Date();
+        this.salud="";
+        this.celular="";
     }
 
     /**
@@ -55,15 +57,16 @@ public class Persona {
      * @return primer nombre
      * */
     public String getPrimerNombre() {
-        return PrimerNombre;
+        return primerNombre;
     }
 
     /**
      * @author : Franklin Sierra.
      * Metodo para actualizar el primer segundo de la persona
+     * @param primerNombre: primer nomre de la persona
      **/
     public void setPrimerNombre(String primerNombre) {
-        PrimerNombre = primerNombre;
+        this.primerNombre = primerNombre;
     }
 
     /**
@@ -72,15 +75,16 @@ public class Persona {
      * @return segundo nombre
      * */
     public String getSegundoNombre() {
-        return SegundoNombre;
+        return segundoNombre;
     }
 
     /**
      * @author : Franklin Sierra.
      * Metodo para actualizar el segundo nombre de la persona
+     * @param segundoNombre: segundo nombre de la persona
      * */
     public void setSegundoNombre(String segundoNombre) {
-        SegundoNombre = segundoNombre;
+        this.segundoNombre = segundoNombre;
     }
 
     /**@author : Franklin Sierra.
@@ -88,14 +92,15 @@ public class Persona {
      * @return primer apellido
      * */
     public String getPrimerApelllido() {
-        return PrimerApelllido;
+        return primerApelllido;
     }
 
     /**@author : Franklin Sierra.
      * Metodo para actualizar el primer apellido de la persona
+     * @param primerApelllido: primer apellido de la persona
      * */
     public void setPrimerApelllido(String primerApelllido) {
-        PrimerApelllido = primerApelllido;
+        this.primerApelllido = primerApelllido;
     }
 
     /**@author : Franklin Sierra.
@@ -103,29 +108,31 @@ public class Persona {
      * @return segundo apellido
      * */
     public String getSegundoApellido() {
-        return SegundoApellido;
+        return segundoApellido;
     }
 
     /**@author : Franklin Sierra.
      * Metodo para actualizar el segundo apellido de la persona
+     * @param segundoApellido : segundo apellido de la persona
      * */
     public void setSegundoApellido(String segundoApellido) {
-        SegundoApellido = segundoApellido;
+        this.segundoApellido = segundoApellido;
     }
 
     /**@author : Franklin Sierra.
      * Metodo para obtener la fecha de nacimiento de la persona
      * @return fecha de nacimiento
      * */
-    public String getNacimiento() {
-        return Nacimiento;
+    public Date getNacimiento() {
+        return fechaNacimiento;
     }
 
     /**@author : Franklin Sierra.
      * Metodo para actualizar la fecha de nacimiento de la persona
+     * @param nacimiento : fecha de nacimiento de la persona
      * */
-    public void setNacimiento(String nacimiento) {
-        Nacimiento = nacimiento;
+    public void setNacimiento(Date nacimiento) {
+        this.fechaNacimiento = nacimiento;
     }
 
     /**@author : Franklin Sierra.
@@ -133,14 +140,15 @@ public class Persona {
      * @return EPS
      * */
     public String getSalud() {
-        return Salud;
+        return salud;
     }
 
     /**@author : Franklin Sierra.
      * Metodo para actualizar la EPS de la persona
+     * @param salud : EPS de la persona
      * */
     public void setSalud(String salud) {
-        Salud = salud;
+        this.salud = salud;
     }
 
     /**@author : Franklin Sierra.
@@ -148,18 +156,21 @@ public class Persona {
      * @return celular
      * */
     public String getCelular() {
-        return Celular;
+        return celular;
     }
 
     /**@author : Franklin Sierra.
      * Metodo para actualizar el celular de la persona
+     * @param celular : movil de la persona
      * */
     public void setCelular(String celular) {
-        Celular = celular;
+        this.celular = celular;
     }
 
     /**@author : Franklin Sierra.
      * Metodo para conocer el primer nombre y apellido de la persona
+     * @param primerNombre : primer nombre de la persona
+     * @param primerApelllido : primer apellido de la persona
     * */
     public void PrimerNombrePrimerApellido(String primerNombre,String primerApelllido){
         System.out.println("El usuario es"+primerNombre+primerApelllido);
