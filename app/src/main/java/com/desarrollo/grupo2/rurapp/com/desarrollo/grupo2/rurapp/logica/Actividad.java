@@ -11,7 +11,7 @@ public class Actividad {
     private String id;
     private Date fechaDeAsignacion;
     private Date fechaDeRevision;
-    private float cantidadDeJornales;
+    private double cantidadDeJornales;
     private char estado;
     private Finca finca;
     private TipoDeActividad tipoDeActividad;
@@ -28,7 +28,7 @@ public class Actividad {
      * @param tipoDeActividad : Tipo o clase de actividad que identifica esta actividad.
      * @param empleado : Empleado al que se le asignaron la actividad.
      */
-    public Actividad(Date fechaDeAsignacion, Date fechaDeRevision, float cantidadDeJornales,
+    public Actividad(Date fechaDeAsignacion, Date fechaDeRevision, double cantidadDeJornales,
                      char estado, Finca finca, TipoDeActividad tipoDeActividad, Empleado empleado) {
         this.fechaDeAsignacion = fechaDeAsignacion;
         this.fechaDeRevision = fechaDeRevision;
@@ -68,7 +68,7 @@ public class Actividad {
     /**
      * @author : Yesid A Gutierrez
      * Método que devuelve la fecha de revisión de la actividad a la que se hace referencia.
-     * @return: la fecha de revisión de la actividad.
+     * @return : la fecha de revisión de la actividad.
      */
     public Date getFechaDeRevision() {
         return fechaDeRevision;
@@ -88,7 +88,7 @@ public class Actividad {
      * Método que devuleve la cantidad decimal de jornales que cuesta realizar una actividad.
      * @return : La cantidad de jornales de la actividad.
      */
-    public float getCantidadDeJornales() {
+    public double getCantidadDeJornales() {
         return cantidadDeJornales;
     }
 
@@ -97,7 +97,7 @@ public class Actividad {
      * Método que actualiza la cantidad de jornales que cuesta una actividad
      * @param cantidadDeJornales : la nueva cantidad de jornales que cuesta realizar una actividad.
      */
-    public void setCantidadDeJornales(float cantidadDeJornales) {
+    public void setCantidadDeJornales(double cantidadDeJornales) {
         this.cantidadDeJornales = cantidadDeJornales;
     }
 
@@ -167,9 +167,18 @@ public class Actividad {
     /**
      * @author : Yesid A Gutierrez
      * Método que se encarga de actualizar el empleado
-     * @param empleado
+     * @param empleado: El nuevo empleado que se encargará de la actividad.
      */
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
+    }
+
+    /**
+     * @author : Yesid A Gutierrez
+     * Método que devuelve el valor o costo de la actividad.
+     * @return : El precio de la actividad.
+     */
+    public double getPrecioActividad() {
+        return this.empleado.getValorJornal()*this.getCantidadDeJornales();
     }
 }
