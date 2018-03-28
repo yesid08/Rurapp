@@ -18,6 +18,7 @@ public class Administrador extends Persona {
      * @param clave : clave del respectivo login
      * */
 
+    
     public Administrador(String primerNombre, String segundoNombre, String primerApelllido, String segundoApellido, String nacimiento, String salud, String celular, String correo, String usuario, String clave) {
         super(primerNombre, segundoNombre, primerApelllido, segundoApellido, nacimiento, salud, celular);
         Correo = correo;
