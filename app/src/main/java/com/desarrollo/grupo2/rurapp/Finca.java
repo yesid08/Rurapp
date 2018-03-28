@@ -45,9 +45,7 @@ public class Finca {
      * Método que devuelve el nombre de la finca.
      * @return El nombre de la finca a la que se hace referencia.
      */
-    public String getNombre() {
-        return nombre;
-    }
+    public String getNombre() { return nombre; }
 
     /**
      * @author : Yesid A Gutierrez
