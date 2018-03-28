@@ -1,4 +1,4 @@
-package com.desarrollo.grupo2.rurapp;
+package com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica;
 
 /**
  * @author : Yesid A Gutierrez
