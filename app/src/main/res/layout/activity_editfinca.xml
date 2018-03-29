@@ -129,7 +129,7 @@
         android:ems="10"
         android:inputType="textMultiLine"
         android:text="descripcion..."
-        android:textColor="@color/colordefaultinputtext"
+        android:textColor="@color/colorText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText3" />
