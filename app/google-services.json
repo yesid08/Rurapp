@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "654229311257",
+    "project_id": "firebase-rurapp"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:654229311257:android:0bc8e61603144d44",
+        "android_client_info": {
+          "package_name": "com.desarrollo.grupo2.rurapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "654229311257-1g6le6mkt96n1mv9n4k6luhnn1sf2kqg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.desarrollo.grupo2.rurapp",
+            "certificate_hash": "44baf2512f6ab5efcea4e511ad709a04a98eb58a"
+          }
+        },
+        {
+          "client_id": "654229311257-o7ghnh51i6hodau823evvlb585qii96u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8HmqyGy9YPxGaSCpMgLMCaLDT9kG-Di4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
