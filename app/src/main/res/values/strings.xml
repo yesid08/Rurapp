@@ -26,4 +26,15 @@
     <string name="text_longitud">Longitud:</string>
     <string name="text_longValue">-Longitud-</string>
     <string name="text_fncNom">Nombre de finca</string>
+    <string name="btn_finca">Fincas</string>
+    <string name="btn_empl">Empleados</string>
+    <string name="btn_act">Actividades</string>
+    <string name="btn_tAct">Tipos de actividades</string>
+    <string name="text_bienvenido">Bienvenido</string>
+    <string name="text_correo">ID@email.com</string>
+    <string name="btn_actRel">Actividades Relacionadas</string>
+    <string name="text_empl">Empleado:</string>
+    <string name="text_emplNom">nombre empleado</string>
+    <string name="text_tActNom">Tipo de actividad</string>
+    <string name="text_tActDescr">Descripcion...</string>
 </resources>
