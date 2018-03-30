@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
                 GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gClienteInicioSesion  = GoogleSignIn.getClient(this,gOpcionesIniciarSesion);
         findViewById(R.id.button).setOnClickListener(this.buttonOnClick());
-        DbHelper datos= new DbHelper(this);
-        SQLiteDatabase db= datos.getWritableDatabase();
+        //DbHelper datos= new DbHelper(this);
+        //SQLiteDatabase db= datos.getWritableDatabase();
     }
 
     /**
