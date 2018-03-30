@@ -1,6 +1,8 @@
 package com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.activities;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.desarrollo.grupo2.rurapp.R;
+import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.datos.DbHelper;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -66,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
                 GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gClienteInicioSesion  = GoogleSignIn.getClient(this,gOpcionesIniciarSesion);
         findViewById(R.id.button).setOnClickListener(this.buttonOnClick());
+        DbHelper datos= new DbHelper(this);
+        SQLiteDatabase db= datos.getWritableDatabase();
     }
 
     /**
