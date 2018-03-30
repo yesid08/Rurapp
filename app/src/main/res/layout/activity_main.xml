@@ -47,7 +47,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="textPassword"
+        android:inputType="textEmailAddress"
         android:enabled="false"
         android:hint="@string/contraseña"
         app:layout_constraintEnd_toEndOf="parent"

@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private final int SERVICIO_INICIAR_SESION = 0;
     private Button botonIniciarSesion;
     private EditText inputUsuario;
+    private EditText inputGmail;
     private GoogleSignInClient gClienteInicioSesion;
 
     /**
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         botonIniciarSesion = findViewById(R.id.button);
         inputUsuario = findViewById(R.id.editText);
+        inputGmail = findViewById(R.id.editText2);
         GoogleSignInOptions gOpcionesIniciarSesion = new GoogleSignInOptions.Builder(
                 GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gClienteInicioSesion  = GoogleSignIn.getClient(this,gOpcionesIniciarSesion);
@@ -86,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         //cuentaGoogle == null cuando el usuario aún no se ha autenticado sattisfactoriamente
         if ( cuentaGoogle != null ) {
             inputUsuario.setText(cuentaGoogle.getDisplayName());
+            inputGmail.setText(cuentaGoogle.getEmail());
         }
         else {
             inputUsuario.setText("");
