@@ -8,4 +8,22 @@
     <string name="actividades">actividades</string>
     <string name="btn_enviar">enviar</string>
     <string name="contraseña">Ingresa tu contraseña</string>
+    <string name="btn_editar">Editar</string>
+    <string name="btn_aceptarEdit">Aceptar</string>
+    <string name="btn_cancelarEdit">Cancelar</string>
+    <string name="btn_add">Añadir</string>
+    <string name="btn_delete">Eliminar</string>
+    <string name="inputText_descr">Descripcion...</string>
+    <string name="inputText_lat">-Latitud-</string>
+    <string name="inputText_long">-Longitud-</string>
+    <string name="inputText_fncNom">Nombre de finca</string>
+    <string name="Text_fncDescr">Descripcion...</string>
+    <string name="clickimage_fnc">Click en imagen para cambiarla</string>
+    <string name="image_fnc">Imagen de finca</string>
+    <string name="text_latitud">Latitud:</string>
+    <string name="text_descripcion">Descripcion</string>
+    <string name="text_latValue">-Latitud-</string>
+    <string name="text_longitud">Longitud:</string>
+    <string name="text_longValue">-Longitud-</string>
+    <string name="text_fncNom">Nombre de finca</string>
 </resources>
