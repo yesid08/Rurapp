@@ -56,4 +56,6 @@
     <string name="text_celularValue">0000000000</string>
     <string name="text_valorJornal">Valor de jornal:</string>
     <string name="text_valorjornalValue">00000</string>
+    <string name="inputText_cedula">0000000000</string>
+    <string name="inputText_fecha"> -- / -- / ---- </string>
 </resources>
