@@ -1,8 +1,6 @@
 package com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.activities;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -71,8 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gClienteInicioSesion  = GoogleSignIn.getClient(this,gOpcionesIniciarSesion);
         findViewById(R.id.button).setOnClickListener(this.buttonOnClick());
-        //DbHelper datos= new DbHelper(this);
-        //SQLiteDatabase db= datos.getWritableDatabase();
+        DbHelper datos= new DbHelper(this);
     }
 
     /**
@@ -105,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener eventoOnClick = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                IniciarSesiónConGoogle();
+                IniciarSesionConGoogle();
             }
         };
         return eventoOnClick;
@@ -116,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
      * Método que se encarga de lanzar una intención para el inicio de sesión del cliente de google
      * identificada por un id definido en SERVICIO_INICIAR_SESION
      */
-    private void IniciarSesiónConGoogle(){
+    private void IniciarSesionConGoogle(){
         Intent signInIntent = this.gClienteInicioSesion.getSignInIntent();
         startActivityForResult(signInIntent, SERVICIO_INICIAR_SESION);
     }

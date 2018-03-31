@@ -8,16 +8,31 @@ import android.util.Log;
 /**
  * Created by FRANKLINSIERRA on 29/03/2018.
  */
-
 public class DbHelper extends SQLiteOpenHelper {
 
+    /**
+     * @author: Franklin Sierra, Yesid A Gutierrez
+     * Características básicas de la base de datos.
+     */
+    private static final int VERSION_DB=1;
+    private static final String Nombre_DB="RurappDB.db";
+
+    /**
+     * @author: Yesid A Gutierrez
+     * Información de la tabla Administradores
+     * estos son los atributos que incluirá la tabla para realizar una comprobación básica con
+     * el servicio de autenticación de Gmail.
+     */
+    protected static final String tabla_administrador = "Administradores";
+    protected static final String column_idAdministrador = "idAdministrador";
+    protected static final String column_gmailAdministrador = "gmailAdministrador";
+    protected static final String column_gmailDisplayName = "gmailDisplayNameAdministrador";
 
     /**
      * @author: Franklin Sierra
      * Informacion de la tabla Empleado
      * */
-
-    private static final String tabla_empleado="Empleado";
+    private static final String tabla_empleado="Empleados";
     public static final String column_idEmpleado="idEmpleado";
     public static final String column_nombreEmpleado="nombreEmpleado";
     public static final String column_estadoEmpleado="estadoEmpleado";
@@ -26,13 +41,11 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String column_saludEmpleado="epsEmpleado";
     public static final String column_celEmpleado="celularEmpleado";
 
-
-
     /**
      * @author: Franklin Sierra
      * Informacion de la tabla Tabla
      * */
-    private static final String tabla_finca="Finca";
+    private static final String tabla_finca="Fincas";
     public static final String column_idFinca="idFinca";
     public static final String column_nombreFinca="nombreFinca";
     public static final String column_latitudFinca="latiutdFinca";
@@ -40,22 +53,20 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String column_descripcionFinca="descripcionFinca";
     public static final String column_fotoFinca="fotoFinca";
 
-
     /**
      * @author: Franklin Sierra
      * Informacion de la tabla Tipo de actividad
      * */
-    private static final String tabla_tipoAct="TipoActividad";
-    public static final String column_idTipoAtividad="idTipoActividad";
-    public static final String column_nombTipoActividad="nombreTipoActividad";
-    public static final String column_descriTipoActividad="descripcionTipoActividad";
-
+    private static final String tabla_tipoAct="TipoDeActividades";
+    public static final String column_idTipoAtividad="idTipoDeActividad";
+    public static final String column_nombTipoActividad="nombreTipoDeActividad";
+    public static final String column_descriTipoActividad="descripcionTipoDeActividad";
 
     /**
      * @author: Franklin Sierra
      * Informacion de la tabla Actividad
      * */
-    private static final String tabla_actividad="Actividad";
+    private static final String tabla_actividad="Actividades";
     public static final String column_idActividad="idActividad";
     public static final String column_fechaAsignacionActividad="asignacionActividad";
     public static final String column_revisionActividad="revisionActividad";
@@ -65,12 +76,18 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String column_actividadIdTipoActividad="idTipoActividad";
     public static final String column_actividadIdFinca="idFinca";
 
-
-    private static final int VERSION_DB=1;
-    private static final String Nombre_DB="RurappDB.db";
-
+    /**
+     * @author: Yesid A Gutierrez
+     * creación de la tabla administradores para realizar el segundo paso de autenticación.
+     */
+    private static final String CREATE_TABLE_ADMINISTRADORES = " create table " + tabla_administrador+
+            " ("+column_idAdministrador+ " integer primary key autoincrement, "+
+            column_gmailAdministrador+" text not null, "+
+            column_gmailDisplayName+ " text not null " +
+            " ) ;";
 
     /**
+     * @author: Franklin Sierra
      * creacion de la tabla empleado
      * */
     private static final String CREATE_TABLE_EMPLEADO=" create table " +tabla_empleado+ " ("+
@@ -83,6 +100,7 @@ public class DbHelper extends SQLiteOpenHelper {
             + column_celEmpleado + " text not null);";
 
     /**
+     * @author: Franklin Sierra
      * creacion de la tabla finca
      * */
     private static final String CREATE_TABLE_FINCA=" create table " +tabla_finca+ " ("+
@@ -91,19 +109,21 @@ public class DbHelper extends SQLiteOpenHelper {
             + column_latitudFinca + " double not null,"
             + column_longitudFinca + " double not null,"
             +column_descripcionFinca + " text not null,"
-            + column_fotoFinca + " text not null);";
+            + column_fotoFinca + " blob not null);";
 
 
     /**
+     * @author: Franklin Sierra
      * creacion de la tabla tipo de actividad
      * */
     private static final String CREATE_TABLE_TIPO_ACTIVIDAD=" create table " +tabla_tipoAct+ " ("+
             column_idTipoAtividad + " integer primary key autoincrement,"
             + column_nombTipoActividad + " text not null,"
-            + column_descriTipoActividad + " text not null);";
+            + column_descriTipoActividad + " text not null );";
 
 
     /**
+     * @author: Franklin Sierra
      * creacion de la tabla actividad
      * */
     private static final String CREATE_TABLE_ACTIVIDAD=" create table " +tabla_actividad+ " ("+
@@ -114,27 +134,47 @@ public class DbHelper extends SQLiteOpenHelper {
             + column_estadoActividad + " text not null,"
             + column_actividadIdEmpleado + " integer not null,"
             + column_actividadIdTipoActividad + " integer not null,"
-            + column_actividadIdFinca + " integer not null);";
+            + column_actividadIdFinca + " integer not null, " +
+            " FOREIGN KEY (" + column_actividadIdEmpleado+") REFERENCES " + tabla_empleado + "( "
+            + column_idEmpleado + " ), " +
+            " FOREIGN KEY (" + column_actividadIdTipoActividad+ ") REFERENCES " + tabla_tipoAct + "( "
+            + column_idTipoAtividad + " ), "+
+            " FOREIGN KEY (" + column_actividadIdFinca + ") REFERENCES " + tabla_finca + "( "
+            + column_idFinca + " ) );";
 
     /**
-     * @author Franklin Sierra
-     * @param context:
+     * @author: Franklin Sierra
+     * @param context: El contexto donde se ejecuta el constructor de la clase.
      * */
     public DbHelper(Context context) {
         super(context,Nombre_DB, null, VERSION_DB);
+        SQLiteDatabase database = this.getReadableDatabase();
     }
 
+    /**
+     * @author: Yesid A Gutierrez , Franlin Sierra
+     * Método onCreate de la clase SQLiteOpenHelper el cual se ejecuta al crearse una base de datos
+     * nueva.
+     * @param db : La base de datos que ejecutará las transacciones.
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        db.execSQL(CREATE_TABLE_ADMINISTRADORES);
         db.execSQL(CREATE_TABLE_EMPLEADO);
         db.execSQL(CREATE_TABLE_FINCA);
         db.execSQL(CREATE_TABLE_TIPO_ACTIVIDAD);
         db.execSQL(CREATE_TABLE_ACTIVIDAD);
     }
 
+    /**
+     *Método de la clase SQLiteOpenHelper que se ejecuta cuando la base de datos se actualiza
+     * @param db : la base de datos que va a ejecutar las transacciones.
+     * @param oldVersion : La versión anterior.
+     * @param newVersion : La versión nueva.
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS "+tabla_administrador);
         db.execSQL("DROP TABLE IF EXISTS "+tabla_empleado);
         db.execSQL("DROP TABLE IF EXISTS "+tabla_finca);
         db.execSQL("DROP TABLE IF EXISTS "+tabla_tipoAct);
