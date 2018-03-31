@@ -160,6 +160,7 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_ADMINISTRADORES);
+        db.execSQL("INSERT INTO Administradores (gmailAdministrador , gmailDisplayNameAdministrador ) VALUES ('yesidgutierrez.08@gmail.com' , '')");
         db.execSQL(CREATE_TABLE_EMPLEADO);
         db.execSQL(CREATE_TABLE_FINCA);
         db.execSQL(CREATE_TABLE_TIPO_ACTIVIDAD);
