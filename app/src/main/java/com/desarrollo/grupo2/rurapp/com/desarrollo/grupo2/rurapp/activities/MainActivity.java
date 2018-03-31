@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         botonIniciarSesion = findViewById(R.id.button);
         inputUsuario = findViewById(R.id.editText);
-        inputGmail = findViewById(R.id.editText2);
+        inputGmail = findViewById(R.id.editText1);
         GoogleSignInOptions gOpcionesIniciarSesion = new GoogleSignInOptions.Builder(
                 GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gClienteInicioSesion  = GoogleSignIn.getClient(this,gOpcionesIniciarSesion);

@@ -6,6 +6,19 @@
     android:layout_height="match_parent">
 
     <Button
+        android:id="@+id/button4"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/button_border"
+        android:text="@string/btn_actRel"
+        android:textColor="@color/colorbuttonselected"
+        app:layout_constraintBottom_toTopOf="@+id/button1"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/toolbar" />
+
+    <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,7 +58,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="36dp"
-        android:text="@string/text_tActDescr"
+        android:text="@string/text_tActDescrValue"
         android:textColor="@color/colorText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/toolbar"
@@ -83,7 +96,7 @@
         android:id="@+id/button1"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/button_border"
         android:text="@string/btn_add"
         android:textColor="@color/colorbuttonselected"

@@ -13,7 +13,7 @@
     <string name="btn_cancelarEdit">Cancelar</string>
     <string name="btn_add">Añadir</string>
     <string name="btn_delete">Eliminar</string>
-    <string name="inputText_descr">Descripcion...</string>
+    <string name="inputText_fncDescr">Descripcion...</string>
     <string name="inputText_lat">-Latitud-</string>
     <string name="inputText_long">-Longitud-</string>
     <string name="inputText_fncNom">Nombre de finca</string>
@@ -36,5 +36,24 @@
     <string name="text_empl">Empleado:</string>
     <string name="text_emplNom">nombre empleado</string>
     <string name="text_tActNom">Tipo de actividad</string>
-    <string name="text_tActDescr">Descripcion...</string>
+    <string name="text_tActDescrValue">Descripcion...</string>
+    <string name="inputText_tActDescrValue">Descripcion...</string>
+    <string name="text_tActNombre">Nombre del tipo de actividad</string>
+    <string name="inputText_tActNombre">Nombre tipo de actividad</string>
+    <string name="text_empleado">Empleado</string>
+    <string name="text_pNom">Primer Nombre</string>
+    <string name="text_segundo">Segundo</string>
+    <string name="text_pApell">Primer Apellido</string>
+    <string name="inputText_pNom">Pri Nombre</string>
+    <string name="inputText_sNom">Seg Nombre</string>
+    <string name="inputText_pApell">Pri Apellido</string>
+    <string name="inputText_sApell">Seg Apellido</string>
+    <string name="text_cedula">Cedula:</string>
+    <string name="text_fecha">Fecha:</string>
+    <string name="text_salud">Salud:</string>
+    <string name="inputText_emplSalud">-Salud-</string>
+    <string name="text_celular">Celular:</string>
+    <string name="text_celularValue">0000000000</string>
+    <string name="text_valorJornal">Valor de jornal:</string>
+    <string name="text_valorjornalValue">00000</string>
 </resources>
