@@ -89,8 +89,16 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             inputUsuario.setText("");
-            Toast.makeText(this, "Por favor autentícate.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No has iniciado sesión por favor autentícate.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        this.gClienteInicioSesion.signOut();
+        inputUsuario.setText("");
+        inputGmail.setText("");
     }
 
     /**
@@ -130,6 +138,9 @@ public class MainActivity extends AppCompatActivity {
         try {
             GoogleSignInAccount cuenta = tareaCompleatada.getResult(ApiException.class);
             // Signed in successfully, show authenticated UI.
+            GoogleSignInAccount cuentaGoogle = GoogleSignIn.getLastSignedInAccount(this);
+            inputUsuario.setText(cuentaGoogle.getDisplayName());
+            inputGmail.setText(cuentaGoogle.getEmail());
             Toast.makeText(this,"Se ha logrado autenticar el usuario " +
                     cuenta.getDisplayName(), Toast.LENGTH_LONG).show();
             lanzarPrimerActivity();
