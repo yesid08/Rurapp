@@ -1,14 +1,15 @@
 package com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 
 /**
  * @author : Yesid A Gutierrez
  * clase Actividad para el proyecto Rurapp
  */
-public class Actividad {
+public class Actividad implements Parcelable{
 
     private String id;
     private Date fechaDeAsignacion;
@@ -51,7 +52,7 @@ public class Actividad {
     }
 
     /**
-     * Método que se encarga de obtener la fecha (formato Date) de la asignación de la actividad
+     * Método que se encarga de obtener la fecha de la asignación de la actividad
      * @return : la fecha de asignación.
      */
     public Date getFechaDeAsignacion() {
@@ -59,58 +60,21 @@ public class Actividad {
     }
 
     /**
-     * Método que se encarga de obtener la fecha en formato String de la asignación de la actividad
-     * @return : la fecha de asignación.
-     */
-    public String getFechaDeAsignacionString() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-        return formatter.format(this.fechaDeAsignacion);
-    }
-    /**
      * @author : Yesid A Gutierrez
-     * método que actualiza la fecha de asignación de la actividad a la que se hace referencia en formato Date).
+     * método que actualiza la fecha de asignación de la actividad a la que se hace referencia.
      * @param fechaDeAsignacion : La nueva fecha de asignación pára la actividad.
      */
     public void setFechaDeAsignacion(Date fechaDeAsignacion) {
         this.fechaDeAsignacion = fechaDeAsignacion;
     }
 
-
-
     /**
      * @author : Yesid A Gutierrez
-     * método que actualiza la fecha de asignación de la actividad a la que se hace referencia (en formato String).
-     * @param fechaDeAsignacion : La nueva fecha de asignación pára la actividad.
-     */
-    public void setFechaDeAsignacion(String fechaDeAsignacion) {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-
-        try {
-
-            this.fechaDeAsignacion = formatter.parse(fechaDeAsignacion);
-
-        } catch (ParseException e) {
-            this.fechaDeAsignacion=null;
-        }
-    }
-
-    /**
-     * @author : Yesid A Gutierrez
-     * Método que devuelve la fecha de revisión de la actividad a la que se hace referencia (en formato date).
+     * Método que devuelve la fecha de revisión de la actividad a la que se hace referencia.
      * @return : la fecha de revisión de la actividad.
      */
     public Date getFechaDeRevision() {
         return fechaDeRevision;
-    }
-
-    /**
-     * @author : Franklin Sierra
-     * Método que devuelve la fecha de revisión de la actividad a la que se hace referencia (formato String).
-     * @return : la fecha de revisión de la actividad.
-     */
-    public String getFechaDeRevisionString() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-        return formatter.format(this.fechaDeAsignacion);
     }
 
     /**
@@ -120,25 +84,6 @@ public class Actividad {
      */
     public void setFechaDeRevision(Date fechaDeRevision) {
         this.fechaDeRevision = fechaDeRevision;
-    }
-
-    /**
-     * @author : Yesid A Gutierrez
-     * Método que se encarga de actualizar la fecha de revisión
-     * @param fechaDeRevision : la nueva fecha de revisión para la actividad a la que se hace referencia en formato String.
-     */
-    public void setFechaDeRevision(String fechaDeRevision) {
-
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-
-
-        try {
-
-            this.fechaDeRevision=formatter.parse(fechaDeRevision);
-
-        } catch (ParseException e) {
-            this.fechaDeRevision=null;
-        }
     }
 
     /**
@@ -239,4 +184,63 @@ public class Actividad {
     public double getPrecioActividad() {
         return this.empleado.getValorJornal()*this.getCantidadDeJornales();
     }
+
+    /**
+     * @author: Yesid A Gutierrez.
+     * Método que crea una actividad apartir de un objeto Parcel
+     * @param entrada : la entrada de datos para implementar el parcel.
+     */
+    public Actividad(Parcel entrada){
+        this.id = entrada.readString();
+        this.setFechaDeAsignacion(  (Date) entrada.readValue( Date.class.getClassLoader() ) );
+        this.setFechaDeRevision(  (Date) entrada.readValue( Date.class.getClassLoader() ) );
+        this.setCantidadDeJornales(entrada.readDouble());
+        this.setEstado((char) entrada.readValue( char.class.getClassLoader() ));
+        this.setFinca((Finca) entrada.readValue( Finca.class.getClassLoader() ));
+        this.setTipoDeActividad((TipoDeActividad) entrada.readValue( TipoDeActividad.class.getClassLoader() ));
+        this.setEmpleado((Empleado) entrada.readValue( Empleado.class.getClassLoader()));
+    }
+
+    /**
+     * @author: Yesid A Gutierrez
+     * Este método no sé que hace exactamente pero debe implementarse, investigar.
+     * @return
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * @author: Yesid A Gutierrez
+     * Método que se utiliza para escribir sobre el objeto parcel.
+     * @param destino : El nuevo parcel que va a recibir el vector.
+     * @param flags : banderas para ejecutar el String (no suele utilizarse por defecto.)
+     */
+    @Override
+    public void writeToParcel(Parcel destino, int flags) {
+        destino.writeString(this.id);
+        destino.writeValue(this.getFechaDeAsignacion());
+        destino.writeValue(this.getFechaDeRevision());
+        destino.writeDouble(this.getCantidadDeJornales());
+        destino.writeValue(this.estado);
+        destino.writeValue(this.getFinca());
+        destino.writeValue(this.getTipoDeActividad());
+        destino.writeValue(this.getEmpleado());
+
+    }
+
+    /**
+     * @author: Yesid A Gutierrez
+     * Variable global estática CREATOR es necesaria para implementar la clase Parcelable.
+     */
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public Empleado createFromParcel(Parcel entrada) {
+            return new Empleado(entrada);
+        }
+
+        public Empleado[] newArray(int tamaño) {
+            return new Empleado[tamaño];
+        }
+    };
 }

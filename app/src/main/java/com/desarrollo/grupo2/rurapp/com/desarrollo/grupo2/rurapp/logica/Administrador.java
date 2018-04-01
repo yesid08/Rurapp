@@ -69,6 +69,11 @@ public class Administrador implements Parcelable{
         this.usuario = usuario;
     }
 
+    /**
+     * @author: Yesid A Gutierrez.
+     * Método que crea un administrador apartir de un objeto Parcel
+     * @param entrada : la entrada de datos para implementar el parcel.
+     */
     public Administrador(Parcel entrada){
         String[] datos = new String[3];
         entrada.readStringArray(datos);
@@ -114,6 +119,4 @@ public class Administrador implements Parcelable{
             return new Administrador[tamaño];
         }
     };
-
-
 }
