@@ -132,11 +132,21 @@ public class MainActivity extends AppCompatActivity {
             // Signed in successfully, show authenticated UI.
             Toast.makeText(this,"Se ha logrado autenticar el usuario " +
                     cuenta.getDisplayName(), Toast.LENGTH_LONG).show();
+            lanzarPrimerActivity();
+
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Toast.makeText(this,"Error: " +e.getStatusCode(),Toast.LENGTH_SHORT).show();
             Toast.makeText(this,"Descripción: "+e.getMessage(),Toast.LENGTH_LONG).show();
         }
+    }
+
+    /**
+     * Este método se encarga de ejecutar el primer activity.
+     */
+    private void lanzarPrimerActivity(){
+        Intent primerActivity = new Intent(this,FirstActivity.class);
+        startActivity(primerActivity);
     }
 }

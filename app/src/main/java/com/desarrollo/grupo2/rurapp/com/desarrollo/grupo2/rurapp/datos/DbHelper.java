@@ -144,7 +144,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     /**
      * Método que se encarga de hacer una inserción de datos por defecto en la tabla administradores.
-     * @param db
+     * @param db : La base de datos que ejecutará la inserción.
      */
     private void insertarAdministradores(SQLiteDatabase db){
         db.execSQL("INSERT INTO Administradores (gmailAdministrador , gmailDisplayNameAdministrador )" +
