@@ -65,4 +65,6 @@
     <string name="text_tact">Tipo de actividad:</string>
     <string name="text_cantJrn">Cantidad de jornales:</string>
     <string name="inputText_cantJrnValue">-0-</string>
+    <string name="check_box">.</string>
+    <string name="estado">Estado</string>
 </resources>
