@@ -142,8 +142,6 @@ public class MainActivity extends AppCompatActivity {
             GoogleSignInAccount cuentaGoogle = GoogleSignIn.getLastSignedInAccount(this);
             inputUsuario.setText(cuentaGoogle.getDisplayName());
             inputGmail.setText(cuentaGoogle.getEmail());
-            Toast.makeText(this,"Se ha logrado autenticar el usuario " +
-                    cuenta.getDisplayName(), Toast.LENGTH_LONG).show();
             lanzarPrimerActivity();
 
         } catch (ApiException e) {
