@@ -1,5 +1,7 @@
 package com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -128,11 +130,37 @@ public class Persona {
     }
 
     /**@author : Franklin Sierra.
+     * Metodo para obtener la fecha de nacimiento de la persona tipo String
+     * @return fecha de nacimiento
+     * */
+    public String  getNacimientoString() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        return formatter.format(fechaNacimiento);
+    }
+
+    /**@author : Franklin Sierra.
      * Metodo para actualizar la fecha de nacimiento de la persona
      * @param nacimiento : fecha de nacimiento de la persona
      * */
     public void setNacimiento(Date nacimiento) {
         this.fechaNacimiento = nacimiento;
+    }
+
+    /**@author : Franklin Sierra.
+     * Metodo para actualizar la fecha de nacimiento de la persona en formato String
+     * @param nacimiento : fecha de nacimiento de la persona
+     * */
+    public void setNacimiento(String nacimiento) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+
+
+        try {
+
+           this.fechaNacimiento=formatter.parse(nacimiento);
+
+        } catch (ParseException e) {
+            this.fechaNacimiento=null;
+        }
     }
 
     /**@author : Franklin Sierra.

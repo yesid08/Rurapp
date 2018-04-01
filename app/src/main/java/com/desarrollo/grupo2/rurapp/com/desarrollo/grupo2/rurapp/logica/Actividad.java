@@ -1,5 +1,7 @@
 package com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -49,7 +51,7 @@ public class Actividad {
     }
 
     /**
-     * Método que se encarga de obtener la fecha de la asignación de la actividad
+     * Método que se encarga de obtener la fecha (formato Date) de la asignación de la actividad
      * @return : la fecha de asignación.
      */
     public Date getFechaDeAsignacion() {
@@ -57,21 +59,58 @@ public class Actividad {
     }
 
     /**
+     * Método que se encarga de obtener la fecha en formato String de la asignación de la actividad
+     * @return : la fecha de asignación.
+     */
+    public String getFechaDeAsignacionString() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        return formatter.format(this.fechaDeAsignacion);
+    }
+    /**
      * @author : Yesid A Gutierrez
-     * método que actualiza la fecha de asignación de la actividad a la que se hace referencia.
+     * método que actualiza la fecha de asignación de la actividad a la que se hace referencia en formato Date).
      * @param fechaDeAsignacion : La nueva fecha de asignación pára la actividad.
      */
     public void setFechaDeAsignacion(Date fechaDeAsignacion) {
         this.fechaDeAsignacion = fechaDeAsignacion;
     }
 
+
+
     /**
      * @author : Yesid A Gutierrez
-     * Método que devuelve la fecha de revisión de la actividad a la que se hace referencia.
+     * método que actualiza la fecha de asignación de la actividad a la que se hace referencia (en formato String).
+     * @param fechaDeAsignacion : La nueva fecha de asignación pára la actividad.
+     */
+    public void setFechaDeAsignacion(String fechaDeAsignacion) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+
+        try {
+
+            this.fechaDeAsignacion = formatter.parse(fechaDeAsignacion);
+
+        } catch (ParseException e) {
+            this.fechaDeAsignacion=null;
+        }
+    }
+
+    /**
+     * @author : Yesid A Gutierrez
+     * Método que devuelve la fecha de revisión de la actividad a la que se hace referencia (en formato date).
      * @return : la fecha de revisión de la actividad.
      */
     public Date getFechaDeRevision() {
         return fechaDeRevision;
+    }
+
+    /**
+     * @author : Franklin Sierra
+     * Método que devuelve la fecha de revisión de la actividad a la que se hace referencia (formato String).
+     * @return : la fecha de revisión de la actividad.
+     */
+    public String getFechaDeRevisionString() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        return formatter.format(this.fechaDeAsignacion);
     }
 
     /**
@@ -81,6 +120,25 @@ public class Actividad {
      */
     public void setFechaDeRevision(Date fechaDeRevision) {
         this.fechaDeRevision = fechaDeRevision;
+    }
+
+    /**
+     * @author : Yesid A Gutierrez
+     * Método que se encarga de actualizar la fecha de revisión
+     * @param fechaDeRevision : la nueva fecha de revisión para la actividad a la que se hace referencia en formato String.
+     */
+    public void setFechaDeRevision(String fechaDeRevision) {
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+
+
+        try {
+
+            this.fechaDeRevision=formatter.parse(fechaDeRevision);
+
+        } catch (ParseException e) {
+            this.fechaDeRevision=null;
+        }
     }
 
     /**
