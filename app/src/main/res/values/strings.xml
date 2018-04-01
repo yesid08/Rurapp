@@ -58,4 +58,11 @@
     <string name="text_valorjornalValue">00000</string>
     <string name="inputText_cedula">0000000000</string>
     <string name="inputText_fecha"> -- / -- / ---- </string>
+    <string name="text_actividad">Actividad</string>
+    <string name="inputText_actividad">Actividad</string>
+    <string name="text_fchAsignacion">Fecha de asignacion:</string>
+    <string name="text_fchRevision">Fecha de revision:</string>
+    <string name="text_tact">Tipo de actividad:</string>
+    <string name="text_cantJrn">Cantidad de jornales:</string>
+    <string name="inputText_cantJrnValue">-0-</string>
 </resources>
