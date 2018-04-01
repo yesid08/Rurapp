@@ -7,36 +7,21 @@ import java.util.Date;
  * @author : Franklin Sierra
  * Clase administrador que hereda de la clase persona
  */
-public class Administrador extends Persona {
+public class Administrador {
 
     private String correo;
     private String usuario;
-    private String clave;
     private String idAdmin;
 
     /**author: Franklin Sierra
      * @param correo: correo del admin
      * @param usuario: login del admin en la app
-     * @param clave : clave del respectivo login
      */
-    public Administrador(String primerNombre, String segundoNombre, String primerApelllido, String segundoApellido,
-                         Date fechaNacimiento, String salud, String celular, String correo, String usuario, String clave) {
-        super(primerNombre, segundoNombre, primerApelllido, segundoApellido, fechaNacimiento, salud, celular);
+    public Administrador(String correo , String usuario) {
+
         this.correo = correo;
         this.usuario = usuario;
-        this.clave = clave;
-    }
-
-    /**
-     * @author Franklin Sierra
-     * @param correo : correo del admin
-     * @param clave : clave del respectivo correo
-     * */
-    public Administrador(String correo, String clave){
-        super();
-        this.correo=correo;
-        this.clave=clave;
-        this.usuario="";
+        this.idAdmin = "0";
     }
 
     /**
@@ -81,21 +66,6 @@ public class Administrador extends Persona {
         this.usuario = usuario;
     }
 
-    /**
-     * @author : Franklin Sierra
-     * Metodo para obtener clave del admin
-     * @return el clave del admin
-     * */
-    public String getClave() {
-        return clave;
-    }
 
-    /** @author : Franklin Sierra
-     * Metodo para actualizar clave del admin
-     * @param clave : actualiza la clave del login
-     * */
-    public void setClave(String clave) {
-        this.clave = clave;
-    }
 
 }
