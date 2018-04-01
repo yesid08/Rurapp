@@ -1,12 +1,15 @@
 package com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 
 /**
  * @author : Yesid A Gutierrez
  * clase Actividad para el proyecto Rurapp
  */
-public class Actividad {
+public class Actividad implements Parcelable{
 
     private String id;
     private Date fechaDeAsignacion;
@@ -181,4 +184,63 @@ public class Actividad {
     public double getPrecioActividad() {
         return this.empleado.getValorJornal()*this.getCantidadDeJornales();
     }
+
+    /**
+     * @author: Yesid A Gutierrez.
+     * Método que crea una actividad apartir de un objeto Parcel
+     * @param entrada : la entrada de datos para implementar el parcel.
+     */
+    public Actividad(Parcel entrada){
+        this.id = entrada.readString();
+        this.setFechaDeAsignacion(  (Date) entrada.readValue( Date.class.getClassLoader() ) );
+        this.setFechaDeRevision(  (Date) entrada.readValue( Date.class.getClassLoader() ) );
+        this.setCantidadDeJornales(entrada.readDouble());
+        this.setEstado((char) entrada.readValue( char.class.getClassLoader() ));
+        this.setFinca((Finca) entrada.readValue( Finca.class.getClassLoader() ));
+        this.setTipoDeActividad((TipoDeActividad) entrada.readValue( TipoDeActividad.class.getClassLoader() ));
+        this.setEmpleado((Empleado) entrada.readValue( Empleado.class.getClassLoader()));
+    }
+
+    /**
+     * @author: Yesid A Gutierrez
+     * Este método no sé que hace exactamente pero debe implementarse, investigar.
+     * @return
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * @author: Yesid A Gutierrez
+     * Método que se utiliza para escribir sobre el objeto parcel.
+     * @param destino : El nuevo parcel que va a recibir el vector.
+     * @param flags : banderas para ejecutar el String (no suele utilizarse por defecto.)
+     */
+    @Override
+    public void writeToParcel(Parcel destino, int flags) {
+        destino.writeString(this.id);
+        destino.writeValue(this.getFechaDeAsignacion());
+        destino.writeValue(this.getFechaDeRevision());
+        destino.writeDouble(this.getCantidadDeJornales());
+        destino.writeValue(this.estado);
+        destino.writeValue(this.getFinca());
+        destino.writeValue(this.getTipoDeActividad());
+        destino.writeValue(this.getEmpleado());
+
+    }
+
+    /**
+     * @author: Yesid A Gutierrez
+     * Variable global estática CREATOR es necesaria para implementar la clase Parcelable.
+     */
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public Empleado createFromParcel(Parcel entrada) {
+            return new Empleado(entrada);
+        }
+
+        public Empleado[] newArray(int tamaño) {
+            return new Empleado[tamaño];
+        }
+    };
 }
