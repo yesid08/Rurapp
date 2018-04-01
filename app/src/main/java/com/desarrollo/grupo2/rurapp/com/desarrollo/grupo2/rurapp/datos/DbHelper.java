@@ -32,49 +32,49 @@ public class DbHelper extends SQLiteOpenHelper {
      * @author: Franklin Sierra
      * Informacion de la tabla Empleado
      * */
-    private static final String tabla_empleado="Empleados";
-    public static final String column_idEmpleado="idEmpleado";
-    public static final String column_nombreEmpleado="nombreEmpleado";
-    public static final String column_estadoEmpleado="estadoEmpleado";
-    public static final String column_valorJornalEmpleado="jornalEmpleado";
-    public static final String column_cedulaEmpleado="cedulaEmpleado";
-    public static final String column_saludEmpleado="epsEmpleado";
-    public static final String column_celEmpleado="celularEmpleado";
+    protected static final String tabla_empleado="Empleados";
+    protected static final String column_idEmpleado="idEmpleado";
+    protected static final String column_nombreEmpleado="nombreEmpleado";
+    protected static final String column_estadoEmpleado="estadoEmpleado";
+    protected static final String column_valorJornalEmpleado="jornalEmpleado";
+    protected static final String column_cedulaEmpleado="cedulaEmpleado";
+    protected static final String column_saludEmpleado="epsEmpleado";
+    protected static final String column_celEmpleado="celularEmpleado";
 
     /**
      * @author: Franklin Sierra
      * Informacion de la tabla Tabla
      * */
-    private static final String tabla_finca="Fincas";
-    public static final String column_idFinca="idFinca";
-    public static final String column_nombreFinca="nombreFinca";
-    public static final String column_latitudFinca="latiutdFinca";
-    public static final String column_longitudFinca="longitudFinca";
-    public static final String column_descripcionFinca="descripcionFinca";
-    public static final String column_fotoFinca="fotoFinca";
+    protected static final String tabla_finca="Fincas";
+    protected static final String column_idFinca="idFinca";
+    protected static final String column_nombreFinca="nombreFinca";
+    protected static final String column_latitudFinca="latiutdFinca";
+    protected static final String column_longitudFinca="longitudFinca";
+    protected static final String column_descripcionFinca="descripcionFinca";
+    protected static final String column_fotoFinca="fotoFinca";
 
     /**
      * @author: Franklin Sierra
      * Informacion de la tabla Tipo de actividad
      * */
-    private static final String tabla_tipoAct="TipoDeActividades";
-    public static final String column_idTipoAtividad="idTipoDeActividad";
-    public static final String column_nombTipoActividad="nombreTipoDeActividad";
-    public static final String column_descriTipoActividad="descripcionTipoDeActividad";
+    protected static final String tabla_tipoAct="TipoDeActividades";
+    protected static final String column_idTipoAtividad="idTipoDeActividad";
+    protected static final String column_nombTipoActividad="nombreTipoDeActividad";
+    protected static final String column_descriTipoActividad="descripcionTipoDeActividad";
 
     /**
      * @author: Franklin Sierra
      * Informacion de la tabla Actividad
      * */
-    private static final String tabla_actividad="Actividades";
-    public static final String column_idActividad="idActividad";
-    public static final String column_fechaAsignacionActividad="asignacionActividad";
-    public static final String column_revisionActividad="revisionActividad";
-    public static final String column_jornalesActividad="numeroJornalesActividad";
-    public static final String column_estadoActividad="estadoActividad";
-    public static final String column_actividadIdEmpleado="idEmpleado";
-    public static final String column_actividadIdTipoActividad="idTipoActividad";
-    public static final String column_actividadIdFinca="idFinca";
+    protected static final String tabla_actividad="Actividades";
+    protected static final String column_idActividad="idActividad";
+    protected static final String column_fechaAsignacionActividad="asignacionActividad";
+    protected static final String column_revisionActividad="revisionActividad";
+    protected static final String column_jornalesActividad="numeroJornalesActividad";
+    protected static final String column_estadoActividad="estadoActividad";
+    protected static final String column_actividadIdEmpleado="idEmpleado";
+    protected static final String column_actividadIdTipoActividad="idTipoActividad";
+    protected static final String column_actividadIdFinca="idFinca";
 
     /**
      * @author: Yesid A Gutierrez
@@ -143,6 +143,15 @@ public class DbHelper extends SQLiteOpenHelper {
             + column_idFinca + " ) );";
 
     /**
+     * Método que se encarga de hacer una inserción de datos por defecto en la tabla administradores.
+     * @param db
+     */
+    private void insertarAdministradores(SQLiteDatabase db){
+        db.execSQL("INSERT INTO Administradores (gmailAdministrador , gmailDisplayNameAdministrador )" +
+                " VALUES ('yesidgutierrez.08@gmail.com' , '')");
+    }
+
+    /**
      * @author: Franklin Sierra
      * @param context: El contexto donde se ejecuta el constructor de la clase.
      * */
@@ -160,7 +169,7 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_ADMINISTRADORES);
-        db.execSQL("INSERT INTO Administradores (gmailAdministrador , gmailDisplayNameAdministrador ) VALUES ('yesidgutierrez.08@gmail.com' , '')");
+        insertarAdministradores(db);
         db.execSQL(CREATE_TABLE_EMPLEADO);
         db.execSQL(CREATE_TABLE_FINCA);
         db.execSQL(CREATE_TABLE_TIPO_ACTIVIDAD);
