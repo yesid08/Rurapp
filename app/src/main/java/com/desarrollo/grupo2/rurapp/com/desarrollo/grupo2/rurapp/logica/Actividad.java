@@ -3,6 +3,8 @@ package com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -60,12 +62,37 @@ public class Actividad implements Parcelable{
     }
 
     /**
+     * Método que se encarga de obtener la fecha de la asignación de la actividad
+     * @return : la fecha de asignación.En formato String
+     */
+    public String getFechaDeAsignacionString() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        return formatter.format(fechaDeAsignacion);
+    }
+
+    /**
      * @author : Yesid A Gutierrez
      * método que actualiza la fecha de asignación de la actividad a la que se hace referencia.
      * @param fechaDeAsignacion : La nueva fecha de asignación pára la actividad.
      */
     public void setFechaDeAsignacion(Date fechaDeAsignacion) {
         this.fechaDeAsignacion = fechaDeAsignacion;
+    }
+
+    /**
+     * @author : Yesid A Gutierrez
+     * método que actualiza la fecha de asignación de la actividad a la que se hace referencia en String
+     * @param fechaDeAsignacion : La nueva fecha de asignación pára la actividad.
+     */
+    public void setFechaDeAsignacion(String fechaDeAsignacion) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+
+        try {
+            this.fechaDeAsignacion=formatter.parse(fechaDeAsignacion);
+
+        } catch (ParseException e) {
+            this.fechaDeAsignacion=null;
+        }
     }
 
     /**
@@ -79,6 +106,16 @@ public class Actividad implements Parcelable{
 
     /**
      * @author : Yesid A Gutierrez
+     * Método que devuelve la fecha de revisión de la actividad a la que se hace referencia en formato String.
+     * @return : la fecha de revisión de la actividad.
+     */
+    public String getFechaDeRevisionString() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        return formatter.format(this.fechaDeRevision);
+    }
+
+    /**
+     * @author : Yesid A Gutierrez
      * Método que se encarga de actualizar la fecha de revisión
      * @param fechaDeRevision : la nueva fecha de revisión para la actividad a la que se hace referencia.
      */
@@ -86,6 +123,22 @@ public class Actividad implements Parcelable{
         this.fechaDeRevision = fechaDeRevision;
     }
 
+    /**
+     * @author : Yesid A Gutierrez
+     * Método que se encarga de actualizar la fecha de revisión
+     * @param fechaDeRevision : la nueva fecha de revisión para la actividad a la que se hace referencia en formato String.
+     */
+    public void setFechaDeRevision(String fechaDeRevision) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+
+        try {
+
+            this.fechaDeRevision=formatter.parse(fechaDeRevision);
+
+        } catch (ParseException e) {
+            this.fechaDeRevision=null;
+        }
+    }
     /**
      * @author : Yesid A Gutierrez
      * Método que devuleve la cantidad decimal de jornales que cuesta realizar una actividad.
