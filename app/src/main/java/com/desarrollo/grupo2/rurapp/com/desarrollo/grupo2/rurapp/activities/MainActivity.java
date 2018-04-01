@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.desarrollo.grupo2.rurapp.R;
 import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.datos.DbHelper;
+import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.Administrador;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -158,6 +159,9 @@ public class MainActivity extends AppCompatActivity {
      */
     private void lanzarPrimerActivity(){
         Intent primerActivity = new Intent(this,FirstActivity.class);
+        Administrador administrador = new Administrador(this.inputGmail.getText().toString()
+                ,this.inputUsuario.getText().toString());
+        primerActivity.putExtra("administrador",administrador);
         startActivity(primerActivity);
     }
 }

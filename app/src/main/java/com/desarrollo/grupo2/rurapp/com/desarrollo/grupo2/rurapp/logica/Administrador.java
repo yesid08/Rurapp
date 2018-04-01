@@ -1,5 +1,8 @@
 package com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 
 /**
@@ -7,7 +10,7 @@ import java.util.Date;
  * @author : Franklin Sierra
  * Clase administrador que hereda de la clase persona
  */
-public class Administrador {
+public class Administrador implements Parcelable{
 
     private String correo;
     private String usuario;
@@ -66,6 +69,51 @@ public class Administrador {
         this.usuario = usuario;
     }
 
+    public Administrador(Parcel entrada){
+        String[] datos = new String[3];
+        entrada.readStringArray(datos);
+        // the order needs to be the same as in writeToParcel() method
+        this.setCorreo(datos[0]);
+        this.setUsuario(datos[1]);
+        this.idAdmin = datos[2];
+    }
+
+    /**
+     * @author: Yesid A Gutierrez
+     * Este método no sé que hace exactamente pero debe implementarse, investigar.
+     * @return
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * @author: Yesid A Gutierrez
+     * Método que se utiliza para escribir en un vector String en el orden que se desee
+     * @param destino : El nuevo parcel que va a recibir el vector.
+     * @param flags : banderas para ejecutar el String (no suele utilizarse por defecto.)
+     */
+    @Override
+    public void writeToParcel(Parcel destino, int flags) {
+        destino.writeStringArray(new String[] {this.getCorreo(),
+                this.getUsuario(),
+                this.getIdAdmin()});
+    }
+
+    /**
+     * @author: Yesid A Gutierrez
+     * Variable global estática CREATOR es necesaria para implementar la clase Parcelable.
+     */
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public Administrador createFromParcel(Parcel entrada) {
+            return new Administrador(entrada);
+        }
+
+        public Administrador[] newArray(int tamaño) {
+            return new Administrador[tamaño];
+        }
+    };
 
 
 }
