@@ -22,13 +22,15 @@ public class Finca implements  Parcelable{
     /**
      *@author : Yesid A Gutierrez
      * Constructor de la clase Finca con todos los parámetros.
+     * @param id : un id que se le asigna a la Finca.
      * @param nombre : el nombre de la finca a la que se quiere hacer referencia.
      * @param latitud: coordenada geográfica de la finca.
      * @param longitud: Coordenada geográfica de la finca.
      * @param descripcion: Descripción de la finca.
      * @param foto: Bitmap que contiene la foto de la finca.
     */
-    public Finca(String nombre, double latitud, double longitud, String descripcion, Bitmap foto) {
+    public Finca(String id, String nombre, double latitud, double longitud, String descripcion, Bitmap foto) {
+        this.id = id;
         this.nombre = nombre;
         this.latitud = latitud;
         this.longitud = longitud;

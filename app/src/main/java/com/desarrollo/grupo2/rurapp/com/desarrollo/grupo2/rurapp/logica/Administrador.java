@@ -17,14 +17,15 @@ public class Administrador implements Parcelable{
     private String idAdmin;
 
     /**author: Franklin Sierra
+     * @param idAdmin: id que se le asigna al admin
      * @param correo: correo del admin
      * @param usuario: login del admin en la app
      */
-    public Administrador(String correo , String usuario) {
+    public Administrador(String idAdmin,String correo , String usuario) {
 
         this.correo = correo;
         this.usuario = usuario;
-        this.idAdmin = "0";
+        this.idAdmin = idAdmin;
     }
 
     /**

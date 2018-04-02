@@ -25,6 +25,7 @@ public class Actividad implements Parcelable{
     /**
      * @author : Yesid A Gutierrez
      * Constructor de la clase Actividad con todos los parámetros excepto el id de la actividad
+     * @param id : id que se le asigna a la actividad.
      * @param fechaDeAsignacion : Fecha en la cual se asignó la actividad.
      * @param fechaDeRevision : Fecha en la que se da revisión a la actividad.
      * @param cantidadDeJornales : Cantidad decimal de jornales que requiere la actividad.
@@ -33,8 +34,9 @@ public class Actividad implements Parcelable{
      * @param tipoDeActividad : Tipo o clase de actividad que identifica esta actividad.
      * @param empleado : Empleado al que se le asignaron la actividad.
      */
-    public Actividad(Date fechaDeAsignacion, Date fechaDeRevision, double cantidadDeJornales,
+    public Actividad(String id,Date fechaDeAsignacion, Date fechaDeRevision, double cantidadDeJornales,
                      char estado, Finca finca, TipoDeActividad tipoDeActividad, Empleado empleado) {
+        this.id = id;
         this.fechaDeAsignacion = fechaDeAsignacion;
         this.fechaDeRevision = fechaDeRevision;
         this.cantidadDeJornales = cantidadDeJornales;
@@ -288,12 +290,12 @@ public class Actividad implements Parcelable{
      * Variable global estática CREATOR es necesaria para implementar la clase Parcelable.
      */
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
-        public Empleado createFromParcel(Parcel entrada) {
-            return new Empleado(entrada);
+        public Actividad createFromParcel(Parcel entrada) {
+            return new Actividad(entrada);
         }
 
-        public Empleado[] newArray(int tamaño) {
-            return new Empleado[tamaño];
+        public Actividad[] newArray(int tamaño) {
+            return new Actividad[tamaño];
         }
     };
 }

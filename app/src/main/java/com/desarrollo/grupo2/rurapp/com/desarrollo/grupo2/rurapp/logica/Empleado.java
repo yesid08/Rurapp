@@ -20,14 +20,16 @@ public class Empleado extends Persona implements Parcelable {
 
     /**
      * @author Franklin Sierra
+     * @param idEmpleado : id que se le asigna al empleado
      * @param estado : en que estado se encuentra el empleado (activo, despedido, vacaciones, etc)
      * @param valorJornal : valor dado en pesos de cada jornal
      * @param cedula : identificacion del empleado
      * */
-    public Empleado(String primerNombre, String segundoNombre, String primerApelllido,
-                    String segundoApellido, Date fechaNacimiento, String salud, String celular,
-                    String idEmpleado, String estado, double valorJornal, String cedula) {
-        super(primerNombre, segundoNombre, primerApelllido, segundoApellido, fechaNacimiento, salud, celular);
+    public Empleado(String idEmpleado,String primerNombre, String segundoNombre,
+                    String primerApelllido, String segundoApellido, Date fechaNacimiento,
+                    String salud, String celular, String estado, double valorJornal, String cedula) {
+        super(primerNombre, segundoNombre, primerApelllido, segundoApellido, fechaNacimiento,
+                salud, celular);
         this.idEmpleado = idEmpleado;
         this.estado = estado;
         this.valorJornal = valorJornal;

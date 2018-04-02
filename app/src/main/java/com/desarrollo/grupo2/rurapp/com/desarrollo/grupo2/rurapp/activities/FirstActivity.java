@@ -22,7 +22,8 @@ public class FirstActivity extends AppCompatActivity {
         this.gmail = findViewById(R.id.textView2);
         this.administrador = getIntent().getParcelableExtra("administrador");
         actualizarUI();
-        Toast.makeText(this,"Bienvenido "+administrador.getUsuario(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Bienvenido "+administrador.getUsuario(),
+                Toast.LENGTH_SHORT).show();
     }
 
     private void actualizarUI(){
