@@ -45,6 +45,14 @@ public class Empleado extends Persona implements Parcelable {
         return estado;
     }
 
+    /**
+     * @author Franklin Sierra
+     * Actualizar el id del empleado
+     * */
+    public void setIdEmpleado(String idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+
     /**@author Franklin Sierra
      * actualiza el estado del trabajador
      * @param estado : nuevo estado del trabajador

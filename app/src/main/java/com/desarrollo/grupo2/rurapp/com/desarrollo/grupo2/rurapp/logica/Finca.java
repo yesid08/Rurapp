@@ -51,6 +51,14 @@ public class Finca implements  Parcelable{
     }
 
     /**
+     * @author : Yesid A Gutierrez
+     * Actualiza el id de la finca
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    /**
      * Método que se encarga de devolver el id de la finca a la que se hace referencia
      * @return código único de la finca.
      */

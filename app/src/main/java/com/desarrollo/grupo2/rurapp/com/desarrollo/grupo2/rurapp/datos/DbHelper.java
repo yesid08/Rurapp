@@ -5,6 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.Empleado;
+import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.Persona;
+
 /**
  * Created by FRANKLINSIERRA on 29/03/2018.
  */
@@ -43,7 +46,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     /**
      * @author: Franklin Sierra
-     * Informacion de la tabla Tabla
+     * Informacion de la tabla Tabla Finca
      * */
     protected static final String tabla_finca="Fincas";
     protected static final String column_idFinca="idFinca";
@@ -136,11 +139,11 @@ public class DbHelper extends SQLiteOpenHelper {
             + column_actividadIdTipoActividad + " integer not null,"
             + column_actividadIdFinca + " integer not null, " +
             " FOREIGN KEY (" + column_actividadIdEmpleado+") REFERENCES " + tabla_empleado + "( "
-            + column_idEmpleado + " ), " +
+            + column_idEmpleado + " ),ON DELETE CASCADE" +
             " FOREIGN KEY (" + column_actividadIdTipoActividad+ ") REFERENCES " + tabla_tipoAct + "( "
-            + column_idTipoAtividad + " ), "+
+            + column_idTipoAtividad + " ), ON DELETE CASCADE "+
             " FOREIGN KEY (" + column_actividadIdFinca + ") REFERENCES " + tabla_finca + "( "
-            + column_idFinca + " ) );";
+            + column_idFinca + " ) ); ON DELETE CASCADE" ;
 
     /**
      * Método que se encarga de hacer una inserción de datos por defecto en la tabla administradores.
@@ -184,6 +187,7 @@ public class DbHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
         db.execSQL("DROP TABLE IF EXISTS "+tabla_administrador);
         db.execSQL("DROP TABLE IF EXISTS "+tabla_empleado);
         db.execSQL("DROP TABLE IF EXISTS "+tabla_finca);
@@ -191,4 +195,10 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+tabla_actividad);
         onCreate(db);
     }
+
+    /**
+     * @author Franklin Sierra
+     * Metodo para insertar Empleados.
+     * */
+
 }
