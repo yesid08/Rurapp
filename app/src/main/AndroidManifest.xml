@@ -19,6 +19,18 @@
         <activity android:name=".com.desarrollo.grupo2.rurapp.activities.FirstActivity">
 
         </activity>
+        <activity android:name=".com.desarrollo.grupo2.rurapp.activities.FincasActivity">
+
+        </activity>
+        <activity android:name=".com.desarrollo.grupo2.rurapp.activities.EmpleadosActivity">
+
+        </activity>
+        <activity android:name=".com.desarrollo.grupo2.rurapp.activities.ActividadesActivity">
+
+        </activity>
+        <activity android:name=".com.desarrollo.grupo2.rurapp.activities.TipoDeActividadesActivity">
+
+        </activity>
     </application>
 
 </manifest>
