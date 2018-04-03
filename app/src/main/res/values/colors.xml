@@ -6,4 +6,5 @@
     <color name="colorText">#141813</color>
     <color name="colorbuttonselected">#ffffff</color>
     <color name="colordefaultinputtext">#A4A4A4</color>
+    <color name="coloraddbutton">#424242</color>
 </resources>

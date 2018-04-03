@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">Rurapp</string>
-    <string name="user">Ingresar usuario</string>
+    <string name="user">Usuario</string>
     <string name="btn_iniciarSesion">Iniciar sesión</string>
     <string name="todo">TODO</string>
     <string name="personal">personal</string>
     <string name="fincas">fincas</string>
     <string name="actividades">actividades</string>
     <string name="btn_enviar">enviar</string>
-    <string name="contraseña">Ingresa tu contraseña</string>
+    <string name="contraseña">Gmail</string>
     <string name="btn_editar">Editar</string>
     <string name="btn_aceptarEdit">Aceptar</string>
     <string name="btn_cancelarEdit">Cancelar</string>
