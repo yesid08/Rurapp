@@ -31,6 +31,18 @@
         <activity android:name=".com.desarrollo.grupo2.rurapp.activities.TipoDeActividadesActivity">
 
         </activity>
+        <activity android:name=".com.desarrollo.grupo2.rurapp.activities.AgregarFincaActivity">
+
+        </activity>
+        <activity android:name=".com.desarrollo.grupo2.rurapp.activities.AgregarActividadesActivity">
+
+        </activity>
+        <activity android:name=".com.desarrollo.grupo2.rurapp.activities.AgregarEmpleadosActivity">
+
+        </activity>
+        <activity android:name=".com.desarrollo.grupo2.rurapp.activities.AgregarTipoDeActividadesActivity">
+
+        </activity>
     </application>
 
 </manifest>
