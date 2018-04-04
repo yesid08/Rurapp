@@ -8,8 +8,9 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="217dp"
+        android:layout_width="175dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/common_google_signin_btn_text_light_focused"
         android:text="@string/btn_iniciarSesion"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,6 +27,8 @@
         android:enabled="false"
         android:hint="@string/user"
         android:inputType="textPersonName"
+        android:singleLine="true"
+        android:textColor="@color/colorText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -42,6 +45,8 @@
         android:enabled="false"
         android:hint="@string/contraseña"
         android:inputType="textEmailAddress"
+        android:singleLine="true"
+        android:textColor="@color/colorText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,8 +54,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="111dp"
-        android:layout_height="93dp"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
+        android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
         android:contentDescription="@string/todo"
         app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
