@@ -162,7 +162,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/inputText_cantJrnValue"
-        android:inputType="textPersonName|numberDecimal"
+        android:inputType="numberDecimal"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="@+id/textView6"
