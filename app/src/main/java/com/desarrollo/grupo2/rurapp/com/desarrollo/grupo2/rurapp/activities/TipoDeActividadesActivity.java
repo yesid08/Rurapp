@@ -2,6 +2,7 @@ package com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +11,7 @@ import com.desarrollo.grupo2.rurapp.R;
 
 public class TipoDeActividadesActivity extends AppCompatActivity {
 
-    private Button buttonAgregarTipoDeActividad;
+    private FloatingActionButton buttonAgregarTipoDeActividad;
 
     /**
      * Método que se ejecuta cuando se crea el activity TipoDeActividades.
@@ -19,7 +20,7 @@ public class TipoDeActividadesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tipoact);
-        this.buttonAgregarTipoDeActividad = findViewById(R.id.button1);
+        this.buttonAgregarTipoDeActividad = findViewById(R.id.floatingActionButton5);
         this.buttonAgregarTipoDeActividad.setOnClickListener(onClickAgregarTipoDeactividad());
     }
 
