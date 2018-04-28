@@ -1,4 +1,4 @@
-package com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.activities;
+package com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,7 +9,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.desarrollo.grupo2.rurapp.R;
-import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.Empleado;
 
 import java.util.ArrayList;
 

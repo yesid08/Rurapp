@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.desarrollo.grupo2.rurapp.R;
+import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.AdaptadorEmpleados;
 import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.Empleado;
 
 import java.util.ArrayList;
