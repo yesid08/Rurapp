@@ -17,7 +17,7 @@ public class Actividad implements Parcelable{
     private Date fechaDeAsignacion;
     private Date fechaDeRevision;
     private double cantidadDeJornales;
-    private char estado;
+    private String estado;
     private Finca finca;
     private TipoDeActividad tipoDeActividad;
     private Empleado empleado;
@@ -35,7 +35,7 @@ public class Actividad implements Parcelable{
      * @param empleado : Empleado al que se le asignaron la actividad.
      */
     public Actividad(String id,Date fechaDeAsignacion, Date fechaDeRevision, double cantidadDeJornales,
-                     char estado, Finca finca, TipoDeActividad tipoDeActividad, Empleado empleado) {
+                     String estado, Finca finca, TipoDeActividad tipoDeActividad, Empleado empleado) {
         this.id = id;
         this.fechaDeAsignacion = fechaDeAsignacion;
         this.fechaDeRevision = fechaDeRevision;
@@ -164,7 +164,7 @@ public class Actividad implements Parcelable{
      * Método que se encarga de obtener el estado de la actividad a la que se hace referencia
      * @return : El estado de la actividad.
      */
-    public char getEstado() {
+    public String getEstado() {
         return estado;
     }
 
@@ -173,7 +173,7 @@ public class Actividad implements Parcelable{
      * Método que se encarga de actualizar el estado actual de la actividad.
      * @param estado : El nuevo caracter que representa el estado de la actividad.
      */
-    public void setEstado(char estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
@@ -250,7 +250,7 @@ public class Actividad implements Parcelable{
         this.setFechaDeAsignacion(  (Date) entrada.readValue( Date.class.getClassLoader() ) );
         this.setFechaDeRevision(  (Date) entrada.readValue( Date.class.getClassLoader() ) );
         this.setCantidadDeJornales(entrada.readDouble());
-        this.setEstado((char) entrada.readValue( char.class.getClassLoader() ));
+        this.setEstado((String) entrada.readValue( char.class.getClassLoader() ));
         this.setFinca((Finca) entrada.readValue( Finca.class.getClassLoader() ));
         this.setTipoDeActividad((TipoDeActividad) entrada.readValue( TipoDeActividad.class.getClassLoader() ));
         this.setEmpleado((Empleado) entrada.readValue( Empleado.class.getClassLoader()));

@@ -117,7 +117,7 @@ public class EmpleadoDAO {
 
     /**
      * @author: Franklin Sierra
-     * listar todas las fincas
+     * listar todas los empleados
      */
     public List<Empleado> getTodosEmpleados() {
         List<Empleado> empleadoList = new ArrayList<>();
