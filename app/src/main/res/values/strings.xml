@@ -67,4 +67,5 @@
     <string name="inputText_cantJrnValue">-0-</string>
     <string name="check_box">.</string>
     <string name="estado">Estado</string>
+    <string name="text_nombActividad">Nombre Actividad:</string>
 </resources>

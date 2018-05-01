@@ -25,7 +25,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView1"
         android:layout_width="381dp"
-        android:layout_height="wrap_content"
+        android:layout_height="507dp"
         android:clickable="false"
         android:clipChildren="false"
         android:clipToPadding="false"
