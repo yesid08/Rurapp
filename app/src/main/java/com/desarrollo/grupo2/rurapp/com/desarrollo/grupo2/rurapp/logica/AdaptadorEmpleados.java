@@ -34,9 +34,10 @@ public class AdaptadorEmpleados extends
      * Empleado.
      */
     public class ViewHolderEmpleados extends RecyclerView.ViewHolder {
-        EditText nombre;
-        CheckBox contratado;
-        Button boton;
+        EditText primerNombre;
+        EditText primerApellido;
+        EditText cedula;
+        EditText valorJornal;
 
 
         /**
@@ -46,9 +47,10 @@ public class AdaptadorEmpleados extends
          */
         public ViewHolderEmpleados(View itemView) {
             super(itemView);
-            nombre = (EditText) itemView.findViewById(R.id.editText10);
-            boton = (Button) itemView.findViewById(R.id.button5);
-            contratado = (CheckBox) itemView.findViewById(R.id.checkBox);
+            primerNombre = (EditText) itemView.findViewById(R.id.editText13);
+            primerApellido = (EditText) itemView.findViewById(R.id.editText11);
+            cedula = (EditText) itemView.findViewById(R.id.editText15);
+            valorJornal = (EditText) itemView.findViewById(R.id.editText16);
         }
     }
 
@@ -73,16 +75,11 @@ public class AdaptadorEmpleados extends
      */
     @Override
     public void onBindViewHolder(ViewHolderEmpleados holder, int position) {
-        String nombre = empleados.get(position).getPrimerNombre() + " "+
-                empleados.get(position).getPrimerApelllido();
-        holder.nombre.setText(nombre);
-        if (empleados.get(position).getEstado() == "contratado") {
-            holder.contratado.setChecked(true);
-        }
-        else{
-            holder.contratado.setChecked(false);
-        }
-        holder.boton.setText("EDITAR");
+
+        holder.primerNombre.setText(empleados.get(position).getPrimerNombre());
+        holder.primerApellido.setText(empleados.get(position).getPrimerApelllido());
+        holder.cedula.setText(empleados.get(position).getCedula());
+        holder.valorJornal.setText(String.valueOf(empleados.get(position).getValorJornal()));
     }
 
     /**

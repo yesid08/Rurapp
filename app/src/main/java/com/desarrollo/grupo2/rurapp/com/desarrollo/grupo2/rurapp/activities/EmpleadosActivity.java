@@ -86,7 +86,11 @@ public class EmpleadosActivity extends AppCompatActivity {
                 View childView = rv.findChildViewUnder(e.getX(), e.getY());
                 if(childView != null && gestureDetector.onTouchEvent(e)) {
                     int idPosicion = rv.getChildAdapterPosition(childView);
-                    Toast.makeText(EmpleadosActivity.this, empleados.get(idPosicion).getPrimerNombre(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(EmpleadosActivity.this,
+                            empleados.get(idPosicion).getPrimerNombre(), Toast.LENGTH_LONG).show();
+                    Intent editarEmpleadoActivity = new Intent(EmpleadosActivity.this, AgregarEmpleadosActivity.class);
+                    editarEmpleadoActivity.putExtra("empleado",empleados.get(idPosicion));
+                    startActivity(editarEmpleadoActivity);
                     return true;
                 }
                 return false;
@@ -123,11 +127,11 @@ public class EmpleadosActivity extends AppCompatActivity {
      * Método que sirve para cargar todos los empleados de la app dentro de un ArrayList
      */
     private void cargarTodosLosEmpleados() {
-        empleados.add(new Empleado("0","Franklin","Alfonso",
-                "Sierra","Guate",new Date(),"AsmetSalud",
-                "3156858436","",15000,"")) ;
+        empleados.add(new Empleado("0","Franklin","Samuel",
+                "Sierra","",new Date(),"Coomeva",
+                "","",25000,"")) ;
         empleados.add(new Empleado("0","Yesid","Alfonso",
                 "Gutierrez","Guate",new Date(),"AsmetSalud",
-                "3156858436","contratado",15000,"")) ;
+                "3156858436","contratado",35000,"1098795086")) ;
     }
 }
