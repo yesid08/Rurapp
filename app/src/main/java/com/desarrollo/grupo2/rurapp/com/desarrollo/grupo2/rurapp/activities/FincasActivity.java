@@ -79,24 +79,6 @@ public class FincasActivity extends AppCompatActivity {
         fincas.add( new Finca("1","El Portal",0.1113 , 0.2532 ,
                 "Gran lugar para descansar" , null)
         );
-        fincas.add( new Finca("0","El carajo",0.1453 , 0.2345 ,
-                "Una finca muy conocida" , null)
-        );
-        fincas.add( new Finca("1","El Portal",0.1113 , 0.2532 ,
-                "Gran lugar para descansar" , null)
-        );
-        fincas.add( new Finca("0","El carajo",0.1453 , 0.2345 ,
-                "Una finca muy conocida" , null)
-        );
-        fincas.add( new Finca("1","El Portal",0.1113 , 0.2532 ,
-                "Gran lugar para descansar" , null)
-        );
-        fincas.add( new Finca("0","El carajo",0.1453 , 0.2345 ,
-                "Una finca muy conocida" , null)
-        );
-        fincas.add( new Finca("1","El Portal",0.1113 , 0.2532 ,
-                "Gran lugar para descansar" , null)
-        );
     }
 
     /**
@@ -119,7 +101,11 @@ public class FincasActivity extends AppCompatActivity {
                 View childView = rv.findChildViewUnder(e.getX(), e.getY());
                 if(childView != null && gestureDetector.onTouchEvent(e)) {
                     int idPosicion = rv.getChildAdapterPosition(childView);
-                    Toast.makeText(FincasActivity.this, fincas.get(idPosicion).getNombre(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(FincasActivity.this, fincas.get(idPosicion).getNombre(),
+                            Toast.LENGTH_SHORT).show();
+                    Intent editarFinca = new Intent(FincasActivity.this,AgregarFincaActivity.class);
+                    editarFinca.putExtra("finca",fincas.get(idPosicion));
+                    startActivity(editarFinca);
                     return true;
                 }
                 return false;
