@@ -40,6 +40,33 @@ public class Persona {
     }
 
     /**
+     * @param primerNombre: primer nombre de la persona
+     * @param segundoNombre: segundo nombre de la persona
+     * @param primerApelllido: primer apellido de la persona
+     * @param segundoApellido: segundo apellido de la persona
+     * @param fechaNacimientoString: fecha de nacimiento de la persona en formato String
+     * @param salud: EPS de la persona
+     * @param celular: numero de celular de la persona
+     */
+    public Persona(String primerNombre, String segundoNombre, String primerApelllido, String segundoApellido,
+                   String fechaNacimientoString, String salud, String celular) {
+        SimpleDateFormat format= new SimpleDateFormat("dd/MM/yyyy");
+        Date fechaNacimiento;
+        try {
+            fechaNacimiento= format.parse(fechaNacimientoString);
+        } catch (ParseException e) {
+            fechaNacimiento = new Date();
+        }
+        this.primerNombre = primerNombre;
+        this.segundoNombre = segundoNombre;
+        this.primerApelllido = primerApelllido;
+        this.segundoApellido = segundoApellido;
+        this.fechaNacimiento = fechaNacimiento;
+        this.salud = salud;
+        this.celular = celular;
+    }
+
+    /**
      * @author : Franklin Sierra.
      * Metodo constructor sin parametros
      * */
@@ -134,7 +161,7 @@ public class Persona {
      * @return fecha de nacimiento
      * */
     public String  getNacimientoString() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         return formatter.format(fechaNacimiento);
     }
 
@@ -151,9 +178,7 @@ public class Persona {
      * @param nacimiento : fecha de nacimiento de la persona
      * */
     public void setNacimiento(String nacimiento) {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-
-
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         try {
 
            this.fechaNacimiento=formatter.parse(nacimiento);

@@ -1,5 +1,6 @@
 package com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.desarrollo.grupo2.rurapp.R;
+import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.datos.EmpleadoDAO;
 import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.AdaptadorEmpleados;
 import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.Empleado;
 
@@ -25,6 +27,12 @@ public class EmpleadosActivity extends AppCompatActivity {
     private RecyclerView.Adapter adaptadorDeEmpleados;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Empleado> empleados;
+
+
+    protected void onStart() {
+        super.onStart();
+        actualizarRecyclerViewEmpleados();
+    }
 
     /**
      * Método que se ejecuta al crear el activity
@@ -127,11 +135,18 @@ public class EmpleadosActivity extends AppCompatActivity {
      * Método que sirve para cargar todos los empleados de la app dentro de un ArrayList
      */
     private void cargarTodosLosEmpleados() {
-        empleados.add(new Empleado("0","Franklin","Samuel",
-                "Sierra","",new Date(),"Coomeva",
-                "","",25000,"")) ;
-        empleados.add(new Empleado("0","Yesid","Alfonso",
-                "Gutierrez","Guate",new Date(),"AsmetSalud",
-                "3156858436","contratado",35000,"1098795086")) ;
+        EmpleadoDAO empleadoDao = new EmpleadoDAO(this);
+        empleados = empleadoDao.getTodosEmpleados();
+
+    }
+
+    private void actualizarRecyclerViewEmpleados(){
+        empleados = new ArrayList<Empleado>();
+        cargarTodosLosEmpleados();
+        layoutManager = new LinearLayoutManager(this);
+        recyclerViewEmpleados.setLayoutManager(layoutManager);
+        adaptadorDeEmpleados = new AdaptadorEmpleados(empleados);
+        recyclerViewEmpleados.setAdapter(adaptadorDeEmpleados);
+        recyclerViewEmpleados.addOnItemTouchListener(eventoTouchEmpleados());
     }
 }

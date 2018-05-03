@@ -12,6 +12,8 @@ import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.datos.EmpleadoD
 import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.AdaptadorFincas;
 import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.Empleado;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class AgregarEmpleadosActivity extends AppCompatActivity {
@@ -48,6 +50,7 @@ public class AgregarEmpleadosActivity extends AppCompatActivity {
         this.aceptarEditarBoton = findViewById(R.id.button1);
         this.aceptarEditarBoton.setOnClickListener(eventoBotonAgregarEditarEmpleado());
         this.empleado = getIntent().getParcelableExtra("empleado");
+        this.valorJornal.setText("0");
         // Si el empleado es nulo es porque la activity se abrió para agregar un nuevo empleado
         // Si el empleado no es nulo es porque se quiere editar el empleado.
         if (empleado != null){
@@ -76,13 +79,19 @@ public class AgregarEmpleadosActivity extends AppCompatActivity {
     }
 
     private Empleado agregarNuevoEmpleado(){
-        empleado = new Empleado("",this.primerNombre.getText().toString(),
+        empleado = new Empleado(
+                "",
+                this.primerNombre.getText().toString(),
                 this.segundoNombre.getText().toString(),
-                this.primerApellido.getText().toString(),this.segundoApellido.getText().toString(),
-                new Date(),this.salud.getText().toString(),
-                this.celular.getText().toString(),"contratado",
-                Double.valueOf(this.valorJornal.getText().toString()),this.cedula.getText().toString());
-        empleado.setNacimiento(this.fechaNacimiento.getText().toString());
+                this.primerApellido.getText().toString(),
+                this.segundoApellido.getText().toString(),
+                this.fechaNacimiento.getText().toString(),
+                this.salud.getText().toString(),
+                this.celular.getText().toString(),
+                "contratado",
+                Double.valueOf(this.valorJornal.getText().toString()),
+                this.cedula.getText().toString());
+
         EmpleadoDAO daoEmpleado = new EmpleadoDAO(this);
         Empleado empleadoRetorno = daoEmpleado.crearEmpleado(empleado);
         return empleadoRetorno;
@@ -95,6 +104,7 @@ public class AgregarEmpleadosActivity extends AppCompatActivity {
                 Empleado emp = agregarNuevoEmpleado();
                 Toast.makeText(AgregarEmpleadosActivity.this,"Se registró el empleado "+emp.getPrimerNombre()+" "+
                 emp.getPrimerApelllido(),Toast.LENGTH_LONG).show();
+                AgregarEmpleadosActivity.this.finish();
             }
         };
         return  evento;

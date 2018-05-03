@@ -17,8 +17,8 @@ public class DbHelper extends SQLiteOpenHelper {
      * @author: Franklin Sierra, Yesid A Gutierrez
      * Características básicas de la base de datos.
      */
-    private static final int VERSION_DB=1;
-    private static final String Nombre_DB="RurappDB.db";
+    private static final int VERSION_DB = 1;
+    private static final String Nombre_DB = "RurappDB.db";
 
     /**
      * @author: Yesid A Gutierrez
@@ -37,12 +37,17 @@ public class DbHelper extends SQLiteOpenHelper {
      * */
     protected static final String tabla_empleado="Empleados";
     protected static final String column_idEmpleado="idEmpleado";
-    protected static final String column_nombreEmpleado="nombreEmpleado";
+    protected static final String column_primerNombreEmpleado="primerNombreEmpleado";
+    protected static final String column_segundoNombreEmpleado="segundoNombreEmpleado";
+    protected static final String column_primerApellidoEmpleado="primerApellidoEmpleado";
+    protected static final String column_segundoApellidoEmpleado="segundoApellidoEmpleado";
     protected static final String column_estadoEmpleado="estadoEmpleado";
     protected static final String column_valorJornalEmpleado="jornalEmpleado";
     protected static final String column_cedulaEmpleado="cedulaEmpleado";
     protected static final String column_saludEmpleado="epsEmpleado";
     protected static final String column_celEmpleado="celularEmpleado";
+    protected static final String column_fechaNacimientoEmpleado="fechaNacimientoEmpleado";
+
 
     /**
      * @author: Franklin Sierra
@@ -95,12 +100,16 @@ public class DbHelper extends SQLiteOpenHelper {
      * */
     private static final String CREATE_TABLE_EMPLEADO=" create table " +tabla_empleado+ " ("+
             column_idEmpleado + " integer primary key autoincrement,"
-            + column_nombreEmpleado + " text not null,"
+            + column_primerNombreEmpleado + " text not null,"
+            + column_segundoNombreEmpleado + " text not null,"
+            + column_primerApellidoEmpleado + " text not null,"
+            + column_segundoApellidoEmpleado + " text not null,"
             + column_estadoEmpleado + " text not null,"
             + column_valorJornalEmpleado + " double not null,"
             + column_cedulaEmpleado + " text not null,"
             + column_saludEmpleado + " text not null,"
-            + column_celEmpleado + " text not null);";
+            + column_celEmpleado + " text not null,"
+            + column_fechaNacimientoEmpleado + " text not null);";
 
     /**
      * @author: Franklin Sierra

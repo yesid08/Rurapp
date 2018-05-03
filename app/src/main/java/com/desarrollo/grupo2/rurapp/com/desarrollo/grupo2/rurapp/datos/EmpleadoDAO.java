@@ -31,12 +31,16 @@ public class EmpleadoDAO {
     private Context mContext;
     private String[] mTodasColumnas = {
             DbHelper.column_idEmpleado,
-            DbHelper.column_nombreEmpleado,
+            DbHelper.column_primerNombreEmpleado,
+            DbHelper.column_segundoNombreEmpleado,
+            DbHelper.column_primerApellidoEmpleado,
+            DbHelper.column_segundoApellidoEmpleado,
             DbHelper.column_estadoEmpleado,
             DbHelper.column_valorJornalEmpleado,
             DbHelper.column_cedulaEmpleado,
             DbHelper.column_saludEmpleado,
             DbHelper.column_celEmpleado,
+            DbHelper.column_fechaNacimientoEmpleado
     };
 
     /**
@@ -77,15 +81,16 @@ public class EmpleadoDAO {
      */
     public Empleado crearEmpleado(Empleado empleado) {
         ContentValues values = new ContentValues();
-        String nombre = empleado.getPrimerNombre()+ " " + empleado.getSegundoNombre()
-                + " " + empleado.getPrimerApelllido()+ " " + empleado.getSegundoApellido();
-        values.put(DbHelper.column_nombreEmpleado, nombre);
+        values.put(DbHelper.column_primerNombreEmpleado, empleado.getPrimerNombre());
+        values.put(DbHelper.column_segundoNombreEmpleado, empleado.getSegundoNombre());
+        values.put(DbHelper.column_primerApellidoEmpleado, empleado.getPrimerApelllido());
+        values.put(DbHelper.column_segundoApellidoEmpleado, empleado.getSegundoApellido());
         values.put(DbHelper.column_estadoEmpleado, empleado.getEstado());
         values.put(DbHelper.column_valorJornalEmpleado, empleado.getValorJornal());
         values.put(DbHelper.column_cedulaEmpleado, empleado.getCedula());
         values.put(DbHelper.column_saludEmpleado, empleado.getSalud());
         values.put(DbHelper.column_celEmpleado, empleado.getCelular());
-
+        values.put(DbHelper.column_fechaNacimientoEmpleado, empleado.getNacimientoString());
         long insertId = mDatabase
                 .insert(DbHelper.tabla_empleado, null, values);
         Cursor cursor = mDatabase.query(DbHelper.tabla_empleado, mTodasColumnas, DbHelper.column_idEmpleado +
@@ -120,8 +125,8 @@ public class EmpleadoDAO {
      * @author: Franklin Sierra
      * listar todas los empleados
      */
-    public List<Empleado> getTodosEmpleados() {
-        List<Empleado> empleadoList = new ArrayList<>();
+    public ArrayList<Empleado> getTodosEmpleados() {
+        ArrayList<Empleado> empleadoList = new ArrayList<>();
 
         Cursor cursor = mDatabase.query(DbHelper.tabla_empleado, mTodasColumnas, null, null,
                 null, null, null);
@@ -162,22 +167,20 @@ public class EmpleadoDAO {
      */
     protected Empleado cursorToEmpleado(Cursor cursor) {
         String id= String.valueOf(cursor.getLong(0));
-        String nombreCompleto=cursor.getString(1);
-        String estado=cursor.getString(2);
-        Double valorJornal=cursor.getDouble(3);
-        String cedula =cursor.getString(4);
-        String salud=cursor.getString(5);
-        String celular=cursor.getString(6);
-        //Este es el parche que se aplica de momento fecha = ahora, nombres se separan por espacios.
-        String nombreCompletoV [] = nombreCompleto.split(" ");
-        String primerNombre = nombreCompletoV[0];
-        String segundoNombre = nombreCompletoV[1];
-        String primerApellido = nombreCompletoV[2];
-        String segundoApellido = nombreCompletoV[3];
-        SimpleDateFormat format= new SimpleDateFormat();
+        String primerNombre = cursor.getString(1);
+        String segundoNombre = cursor.getString(2);
+        String primerApellido = cursor.getString(3);
+        String segundoApellido = cursor.getString(4);
+        String estado=cursor.getString(5);
+        Double valorJornal=cursor.getDouble(6);
+        String cedula =cursor.getString(7);
+        String salud=cursor.getString(8);
+        String celular=cursor.getString(9);
+
+        SimpleDateFormat format= new SimpleDateFormat("dd/MM/yyyy");
         Date fechaNacimiento;
         try {
-             fechaNacimiento= format.parse((cursor.getString(5)));
+             fechaNacimiento= format.parse((cursor.getString(10)));
         } catch (ParseException e) {
              fechaNacimiento = new Date();
         }
