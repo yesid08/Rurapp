@@ -75,15 +75,16 @@ public class EmpleadoDAO {
      * @author: Franklin Sierra
      * metodo para creacion de cada empleado
      */
-    public Empleado crearEmpleado(String nombre, String estado, double valorJornal, String cedula
-            ,String salud, String celular) {
+    public Empleado crearEmpleado(Empleado empleado) {
         ContentValues values = new ContentValues();
+        String nombre = empleado.getPrimerNombre()+ " " + empleado.getSegundoNombre()
+                + " " + empleado.getPrimerApelllido()+ " " + empleado.getSegundoApellido();
         values.put(DbHelper.column_nombreEmpleado, nombre);
-        values.put(DbHelper.column_estadoEmpleado, estado);
-        values.put(DbHelper.column_valorJornalEmpleado, valorJornal);
-        values.put(DbHelper.column_cedulaEmpleado, cedula);
-        values.put(DbHelper.column_saludEmpleado, salud);
-        values.put(DbHelper.column_celEmpleado, celular);
+        values.put(DbHelper.column_estadoEmpleado, empleado.getEstado());
+        values.put(DbHelper.column_valorJornalEmpleado, empleado.getValorJornal());
+        values.put(DbHelper.column_cedulaEmpleado, empleado.getCedula());
+        values.put(DbHelper.column_saludEmpleado, empleado.getSalud());
+        values.put(DbHelper.column_celEmpleado, empleado.getCelular());
 
         long insertId = mDatabase
                 .insert(DbHelper.tabla_empleado, null, values);
@@ -151,27 +152,37 @@ public class EmpleadoDAO {
         return empleado;
     }
 
+    /**
+     * El orden de los items en  el cursos es definido por mTodasLasColumnas
+     * Se necesita agregar los campos de Fecha de nacimiento, primerNombre, segundoNombre,
+     * primerApellido, segundoApellido. de momento funciona con un parche temporal!
+     * se requieren cambios!
+     * @param cursor
+     * @return
+     */
     protected Empleado cursorToEmpleado(Cursor cursor) {
         String id= String.valueOf(cursor.getLong(0));
-        String primerNombre=cursor.getString(1);
-        String segundoNombre=cursor.getString(2);
-        String primerApellido=cursor.getString(3);
-        String segundoApellido=cursor.getString(4);
+        String nombreCompleto=cursor.getString(1);
+        String estado=cursor.getString(2);
+        Double valorJornal=cursor.getDouble(3);
+        String cedula =cursor.getString(4);
+        String salud=cursor.getString(5);
+        String celular=cursor.getString(6);
+        //Este es el parche que se aplica de momento fecha = ahora, nombres se separan por espacios.
+        String nombreCompletoV [] = nombreCompleto.split(" ");
+        String primerNombre = nombreCompletoV[0];
+        String segundoNombre = nombreCompletoV[1];
+        String primerApellido = nombreCompletoV[2];
+        String segundoApellido = nombreCompletoV[3];
         SimpleDateFormat format= new SimpleDateFormat();
         Date fechaNacimiento;
         try {
              fechaNacimiento= format.parse((cursor.getString(5)));
         } catch (ParseException e) {
-             fechaNacimiento=null;
+             fechaNacimiento = new Date();
         }
-        String salud=cursor.getString(6);
-        String celular=cursor.getString(7);
-        String estado=cursor.getString(8);
-        Double valorJornal=cursor.getDouble(9);
-        String cedula =cursor.getString(10);
         Empleado empleado = new Empleado(id,primerNombre, segundoNombre,primerApellido, segundoApellido, fechaNacimiento,
                 salud,celular,estado,valorJornal,cedula);
-
         return empleado;
     }
 }

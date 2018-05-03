@@ -96,7 +96,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_EMPLEADO=" create table " +tabla_empleado+ " ("+
             column_idEmpleado + " integer primary key autoincrement,"
             + column_nombreEmpleado + " text not null,"
-            + column_estadoEmpleado + " char not null,"
+            + column_estadoEmpleado + " text not null,"
             + column_valorJornalEmpleado + " double not null,"
             + column_cedulaEmpleado + " text not null,"
             + column_saludEmpleado + " text not null,"

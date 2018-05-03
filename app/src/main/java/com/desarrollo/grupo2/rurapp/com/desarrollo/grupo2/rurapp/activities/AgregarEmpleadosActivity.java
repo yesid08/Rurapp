@@ -2,10 +2,17 @@ package com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.desarrollo.grupo2.rurapp.R;
+import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.datos.EmpleadoDAO;
+import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.AdaptadorFincas;
 import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.Empleado;
+
+import java.util.Date;
 
 public class AgregarEmpleadosActivity extends AppCompatActivity {
 
@@ -19,6 +26,7 @@ public class AgregarEmpleadosActivity extends AppCompatActivity {
     private EditText fechaNacimiento;
     private EditText celular;
     private EditText valorJornal;
+    private Button aceptarEditarBoton;
     private boolean editarEmpleado;
 
     /**
@@ -37,6 +45,8 @@ public class AgregarEmpleadosActivity extends AppCompatActivity {
         this.celular = findViewById(R.id.editText7);
         this.valorJornal = findViewById(R.id.editText8);
         this.fechaNacimiento = findViewById(R.id.editText9);
+        this.aceptarEditarBoton = findViewById(R.id.button1);
+        this.aceptarEditarBoton.setOnClickListener(eventoBotonAgregarEditarEmpleado());
         this.empleado = getIntent().getParcelableExtra("empleado");
         // Si el empleado es nulo es porque la activity se abrió para agregar un nuevo empleado
         // Si el empleado no es nulo es porque se quiere editar el empleado.
@@ -63,5 +73,30 @@ public class AgregarEmpleadosActivity extends AppCompatActivity {
         this.celular.setText(empleado.getCelular());
         this.valorJornal.setText(String.valueOf(empleado.getValorJornal()));
         this.fechaNacimiento.setText(empleado.getNacimientoString());
+    }
+
+    private Empleado agregarNuevoEmpleado(){
+        empleado = new Empleado("",this.primerNombre.getText().toString(),
+                this.segundoNombre.getText().toString(),
+                this.primerApellido.getText().toString(),this.segundoApellido.getText().toString(),
+                new Date(),this.salud.getText().toString(),
+                this.celular.getText().toString(),"contratado",
+                Double.valueOf(this.valorJornal.getText().toString()),this.cedula.getText().toString());
+        empleado.setNacimiento(this.fechaNacimiento.getText().toString());
+        EmpleadoDAO daoEmpleado = new EmpleadoDAO(this);
+        Empleado empleadoRetorno = daoEmpleado.crearEmpleado(empleado);
+        return empleadoRetorno;
+    }
+
+    private View.OnClickListener eventoBotonAgregarEditarEmpleado(){
+        View.OnClickListener evento = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Empleado emp = agregarNuevoEmpleado();
+                Toast.makeText(AgregarEmpleadosActivity.this,"Se registró el empleado "+emp.getPrimerNombre()+" "+
+                emp.getPrimerApelllido(),Toast.LENGTH_LONG).show();
+            }
+        };
+        return  evento;
     }
 }

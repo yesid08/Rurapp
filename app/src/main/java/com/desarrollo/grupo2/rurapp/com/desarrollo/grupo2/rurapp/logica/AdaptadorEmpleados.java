@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.desarrollo.grupo2.rurapp.R;
 
@@ -34,10 +35,10 @@ public class AdaptadorEmpleados extends
      * Empleado.
      */
     public class ViewHolderEmpleados extends RecyclerView.ViewHolder {
-        EditText primerNombre;
-        EditText primerApellido;
-        EditText cedula;
-        EditText valorJornal;
+        TextView primerNombre;
+        TextView primerApellido;
+        TextView cedula;
+        TextView valorJornal;
 
 
         /**
@@ -47,10 +48,10 @@ public class AdaptadorEmpleados extends
          */
         public ViewHolderEmpleados(View itemView) {
             super(itemView);
-            primerNombre = (EditText) itemView.findViewById(R.id.editText13);
-            primerApellido = (EditText) itemView.findViewById(R.id.editText11);
-            cedula = (EditText) itemView.findViewById(R.id.editText15);
-            valorJornal = (EditText) itemView.findViewById(R.id.editText16);
+            primerNombre = (TextView) itemView.findViewById(R.id.editText13);
+            primerApellido = (TextView) itemView.findViewById(R.id.editText11);
+            cedula = (TextView) itemView.findViewById(R.id.editText15);
+            valorJornal = (TextView) itemView.findViewById(R.id.editText16);
         }
     }
 
