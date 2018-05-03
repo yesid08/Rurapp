@@ -4,14 +4,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
 import com.desarrollo.grupo2.rurapp.R;
+import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.AdaptadorTiposDeActividades;
+import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.TipoDeActividad;
+
+import java.util.ArrayList;
 
 public class TipoDeActividadesActivity extends AppCompatActivity {
 
     private FloatingActionButton buttonAgregarTipoDeActividad;
+    private RecyclerView recyclerViewTipoDeActividades;
+    private RecyclerView.Adapter adaptadorDeTipoDeActividades;
+    private RecyclerView.LayoutManager layoutManager;
+    private ArrayList<TipoDeActividad> tiposDeActividades;
 
     /**
      * Método que se ejecuta cuando se crea el activity TipoDeActividades.
@@ -22,6 +32,14 @@ public class TipoDeActividadesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tipoact);
         this.buttonAgregarTipoDeActividad = findViewById(R.id.floatingActionButton5);
         this.buttonAgregarTipoDeActividad.setOnClickListener(onClickAgregarTipoDeactividad());
+        this.recyclerViewTipoDeActividades = findViewById(R.id.recyclerViewT);
+        tiposDeActividades = new ArrayList<TipoDeActividad>();
+        cargarTodosLosTiposDeActividades();
+        this.layoutManager = new LinearLayoutManager(this);
+        recyclerViewTipoDeActividades.setLayoutManager(layoutManager);
+        this.adaptadorDeTipoDeActividades = new AdaptadorTiposDeActividades(tiposDeActividades);
+        this.recyclerViewTipoDeActividades.setAdapter(adaptadorDeTipoDeActividades);
+
     }
 
     /**
@@ -45,6 +63,15 @@ public class TipoDeActividadesActivity extends AppCompatActivity {
     private void lanzarActivityAgregarTipoDeActividad(){
         Intent activityAgregarTipoDeActividad  = new Intent(this,AgregarTipoDeActividadesActivity.class);
         startActivity(activityAgregarTipoDeActividad);
+    }
+
+    /**
+     * En este método se cargan todos los Tipos de Actividades de la Aplicación
+     */
+    private void cargarTodosLosTiposDeActividades(){
+        tiposDeActividades.add(
+                new TipoDeActividad("0","Regar","Es una actividad que consiste en hidratar los cultivos")
+        );
     }
 
 
