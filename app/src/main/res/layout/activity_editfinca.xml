@@ -56,21 +56,6 @@
         app:layout_constraintStart_toStartOf="@+id/textView1"
         app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="22dp"
-        android:text="@string/text_empl"
-        android:textAllCaps="true"
-        android:textColor="@color/colorText"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
     <EditText
         android:id="@+id/editText2"
         android:layout_width="200dp"
@@ -123,14 +108,14 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="44dp"
         android:ems="10"
         android:hint="@string/inputText_fncDescr"
         android:inputType="textMultiLine"
         android:textColor="@color/colorText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
     <Button
         android:id="@+id/button1"
@@ -157,21 +142,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.6" />
 
 </android.support.constraint.ConstraintLayout>
