@@ -48,6 +48,41 @@ public class Actividad implements Parcelable{
 
     /**
      * @author : Yesid A Gutierrez
+     * Constructor de la clase Actividad con todos los parámetros excepto el id de la actividad
+     * @param id : id que se le asigna a la actividad.
+     * @param fechaDeAsignacion : Fecha en la cual se asignó la actividad.
+     * @param fechaDeRevision : Fecha en la que se da revisión a la actividad.
+     * @param cantidadDeJornales : Cantidad decimal de jornales que requiere la actividad.
+     * @param estado : El estado actual de la actividad.
+     * @param finca: La finca a la que pertenece la actividad.
+     * @param tipoDeActividad : Tipo o clase de actividad que identifica esta actividad.
+     * @param empleado : Empleado al que se le asignaron la actividad.
+     */
+    public Actividad(String id,String fechaDeAsignacion, String fechaDeRevision, double cantidadDeJornales,
+                     String estado, Finca finca, TipoDeActividad tipoDeActividad, Empleado empleado) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        this.id = id;
+        try {
+            this.fechaDeAsignacion=formatter.parse(fechaDeAsignacion);
+        }
+        catch (ParseException e) {
+            this.fechaDeAsignacion= new Date();
+        }
+        try {
+            this.fechaDeRevision=formatter.parse(fechaDeAsignacion);
+        }
+        catch (ParseException e) {
+            this.fechaDeRevision= new Date();
+        }
+        this.cantidadDeJornales = cantidadDeJornales;
+        this.estado = estado;
+        this.finca = finca;
+        this.tipoDeActividad = tipoDeActividad;
+        this.empleado = empleado;
+    }
+
+    /**
+     * @author : Yesid A Gutierrez
      * Método que devuelte el código único de la Actividad.
      * @return : id de la actividad.
      */
@@ -68,7 +103,7 @@ public class Actividad implements Parcelable{
      * @return : la fecha de asignación.En formato String
      */
     public String getFechaDeAsignacionString() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         return formatter.format(fechaDeAsignacion);
     }
 
@@ -87,7 +122,7 @@ public class Actividad implements Parcelable{
      * @param fechaDeAsignacion : La nueva fecha de asignación pára la actividad.
      */
     public void setFechaDeAsignacion(String fechaDeAsignacion) {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
         try {
             this.fechaDeAsignacion=formatter.parse(fechaDeAsignacion);
@@ -112,7 +147,7 @@ public class Actividad implements Parcelable{
      * @return : la fecha de revisión de la actividad.
      */
     public String getFechaDeRevisionString() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         return formatter.format(this.fechaDeRevision);
     }
 
@@ -131,7 +166,7 @@ public class Actividad implements Parcelable{
      * @param fechaDeRevision : la nueva fecha de revisión para la actividad a la que se hace referencia en formato String.
      */
     public void setFechaDeRevision(String fechaDeRevision) {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
         try {
 
