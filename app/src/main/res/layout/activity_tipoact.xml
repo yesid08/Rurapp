@@ -26,7 +26,7 @@
         android:id="@+id/recyclerViewT"
         android:layout_width="381dp"
         android:layout_height="507dp"
-        android:clickable="true"
+        android:clickable="false"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:scrollbars="vertical"
