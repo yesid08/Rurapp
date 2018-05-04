@@ -121,7 +121,7 @@ public class DbHelper extends SQLiteOpenHelper {
             + column_latitudFinca + " double not null,"
             + column_longitudFinca + " double not null,"
             +column_descripcionFinca + " text not null,"
-            + column_fotoFinca + " blob not null);";
+            + column_fotoFinca + " blob );";
 
 
     /**

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.desarrollo.grupo2.rurapp.R;
+import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.datos.FincaDAO;
 import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.AdaptadorFincas;
 import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.Finca;
 
@@ -25,6 +26,12 @@ public class FincasActivity extends AppCompatActivity {
     private RecyclerView.Adapter adaptadorFincas;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Finca> fincas;
+
+    protected void onStart(){
+        super.onStart();
+        actualizarRecyclerViewFincas();
+    }
+
 
     /**
      * Método que se ejecuta al crear el activity
@@ -73,12 +80,18 @@ public class FincasActivity extends AppCompatActivity {
      * Método que se utiliza para cargar todas las fincas de la app al recyclerView.
      */
     private void cargarTodasLasFincas(){
-        fincas.add( new Finca("0","El carajo",0.1453 , 0.2345 ,
-                "Una finca muy conocida" , null)
-        );
-        fincas.add( new Finca("1","El Portal",0.1113 , 0.2532 ,
-                "Gran lugar para descansar" , null)
-        );
+        FincaDAO fincaDAO = new FincaDAO(this);
+        this.fincas =  fincaDAO.getTodasFincas();
+    }
+
+    private void actualizarRecyclerViewFincas(){
+        fincas = new ArrayList<Finca>();
+        cargarTodasLasFincas();
+        layoutManager = new LinearLayoutManager(this);
+        recyclerViewFincas.setLayoutManager(layoutManager);
+        adaptadorFincas = new AdaptadorFincas(fincas);
+        recyclerViewFincas.setAdapter(adaptadorFincas);
+        recyclerViewFincas.addOnItemTouchListener(eventoTocarItemFinca());
     }
 
     /**

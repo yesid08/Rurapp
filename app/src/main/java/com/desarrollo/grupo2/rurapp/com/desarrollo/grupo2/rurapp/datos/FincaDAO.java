@@ -27,8 +27,8 @@ public class FincaDAO {
             DbHelper.column_nombreFinca,
             DbHelper.column_latitudFinca,
             DbHelper.column_longitudFinca,
-            DbHelper.column_descripcionFinca,
-            DbHelper.column_fotoFinca
+            DbHelper.column_descripcionFinca
+            //, DbHelper.column_fotoFinca
     };
 
     /**
@@ -67,15 +67,14 @@ public class FincaDAO {
      * @author: Franklin Sierra
      * metodo para creacion de cada finca
      * */
-    public Finca crearFinca(String nombre, double latitud, double longitud, String descripcion
-    , Bitmap foto){
+    public Finca crearFinca(Finca finca ){
         ContentValues values = new ContentValues();
-        values.put(DbHelper.column_nombreFinca, nombre);
-        values.put(DbHelper.column_latitudFinca, latitud);
-        values.put(DbHelper.column_longitudFinca, longitud);
-        values.put(DbHelper.column_descripcionFinca, descripcion);
+        values.put(DbHelper.column_nombreFinca, finca.getNombre());
+        values.put(DbHelper.column_latitudFinca, finca.getLatitud());
+        values.put(DbHelper.column_longitudFinca, finca.getLongitud());
+        values.put(DbHelper.column_descripcionFinca, finca.getDescripcion());
         //falta buscar el metodo para obtener imagenes
-        //values.put(DbHelper.column_fotoFinca, foto);
+        //values.put(DbHelper.column_fotoFinca, null);
         long insertId = mDatabase
                 .insert(DbHelper.tabla_finca, null, values);
         Cursor cursor = mDatabase.query(DbHelper.tabla_finca, mTodasColumnas, DbHelper.column_idFinca +
@@ -111,8 +110,8 @@ public class FincaDAO {
      * @author: Franklin Sierra
      * listar todas las fincas
      * */
-    public List<Finca> getTodasFincas(){
-        List<Finca> fincaList= new ArrayList<>();
+    public ArrayList<Finca> getTodasFincas(){
+        ArrayList<Finca> fincaList= new ArrayList<>();
 
         Cursor cursor = mDatabase.query(DbHelper.tabla_finca, mTodasColumnas, null, null,
                 null, null, null);
