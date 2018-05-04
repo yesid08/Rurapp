@@ -156,6 +156,11 @@ public class Finca implements  Parcelable{
         this.foto = foto;
     }
 
+    @Override
+    public String toString() {
+        return this.getNombre();
+    }
+
     /**
      * @author: Yesid A Gutierrez.
      * Método que crea un tipo de actividad apartir de un objeto Parcel

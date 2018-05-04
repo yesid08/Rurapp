@@ -33,7 +33,7 @@ public class AgregarActividadesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_editactividad);
         this.listaDesplegableTipoDeActividad = findViewById(R.id.spinner1);
         this.listaDesplegableEmpleados = findViewById(R.id.spinner2);
-        //this.listaDesplegableFincas = findViewById(R.id.spinner3);
+        this.listaDesplegableFincas = findViewById(R.id.spinner3);
         EmpleadoDAO empleadoDAO = new EmpleadoDAO(this);
         TipoDeActividadDAO tipoDeActividadDAO = new TipoDeActividadDAO(this);
         FincaDAO fincasDAO = new FincaDAO(this);
@@ -42,7 +42,7 @@ public class AgregarActividadesActivity extends AppCompatActivity {
         this.fincas = fincasDAO.getTodasFincas();
         cargarEmpleadosSpinner();
         cargarTiposDeActividadesSpinner();
-        //cargarFincasSpinner();
+        cargarFincasSpinner();
     }
 
     private void cargarEmpleadosSpinner(){
