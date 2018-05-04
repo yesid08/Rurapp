@@ -5,6 +5,7 @@
     <string name="todo">TODO</string>
     <string name="personal">personal</string>
     <string name="fincas">fincas</string>
+    <string name="text_fnc">Fincas:</string>
     <string name="actividades">actividades</string>
     <string name="btn_enviar">enviar</string>
     <string name="contraseña">Gmail</string>
