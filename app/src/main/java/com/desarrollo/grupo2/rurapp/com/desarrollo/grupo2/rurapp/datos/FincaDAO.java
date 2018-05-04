@@ -143,17 +143,21 @@ public class FincaDAO {
         return finca;
     }
 
+    /**
+     * El orden de los items en  el cursor es definido por mTodasLasColumnas
+     * @param cursor
+     * @return
+     */
     protected Finca cursorToFinca(Cursor cursor){
-        Finca finca = new Finca();
         //aca debe modificarse el id de finca
         //el problema es el setId deberia ir el siguiente comando:
-        finca.setId(String.valueOf(cursor.getLong(0)));
-        finca.setNombre(cursor.getString(1));
-        finca.setLatitud(cursor.getDouble(2));
-        finca.setLongitud(cursor.getDouble(3));
-        finca.setDescripcion(cursor.getString(4));
-        //falta consultar el metodo de obtener la foto
-        finca.setFoto(null);
+        String id= String.valueOf(cursor.getLong(0));
+        String nombre= cursor.getString(1);
+        Double latitud= cursor.getDouble(2);
+        Double longitud= cursor.getDouble(3);
+        String descripcion= cursor.getString(4);
+
+        Finca finca = new Finca(id,nombre,latitud,longitud,descripcion,null);
         return finca;
     }
 
