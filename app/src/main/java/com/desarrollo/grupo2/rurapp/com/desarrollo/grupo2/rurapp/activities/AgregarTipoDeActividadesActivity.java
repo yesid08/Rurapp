@@ -16,6 +16,7 @@ public class AgregarTipoDeActividadesActivity extends AppCompatActivity {
     private EditText nombreActividad;
     private EditText descripcionActividad;
     private Button botonAceptar;
+    private TipoDeActividad tipoDeActividad;
 
     /**
      * Método que se ejecuta al crear el activity
@@ -24,9 +25,13 @@ public class AgregarTipoDeActividadesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editiptact);
+        this.tipoDeActividad = getIntent().getParcelableExtra("tipoDeActividad");
         this.nombreActividad = findViewById(R.id.editText2);
         this.descripcionActividad = findViewById(R.id.editText1);
         this.botonAceptar = findViewById(R.id.button1);
+        if (this.tipoDeActividad != null){
+            utilizarInformacionTipoDeActividad();
+        }
         this.botonAceptar.setOnClickListener(eventoClickBotonAceptar());
     }
 
@@ -59,5 +64,13 @@ public class AgregarTipoDeActividadesActivity extends AppCompatActivity {
         TipoDeActividad tipoDeActividadRetorno =  tipoDeActividadDAO.crearTipoDeActividad(
                 tipoDeActividad);
         return tipoDeActividadRetorno;
+    }
+
+    private void utilizarInformacionTipoDeActividad(){
+        this.nombreActividad.setText(this.tipoDeActividad.getNombre());
+        this.descripcionActividad.setText(this.tipoDeActividad.getDescripcion());
+        this.nombreActividad.setFocusable(false);
+        this.descripcionActividad.setFocusable(false);
+        this.botonAceptar.setEnabled(false);
     }
 }

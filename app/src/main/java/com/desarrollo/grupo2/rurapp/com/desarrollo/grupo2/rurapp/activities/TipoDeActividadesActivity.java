@@ -6,8 +6,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.desarrollo.grupo2.rurapp.R;
 import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.datos.TipoDeActividadDAO;
@@ -45,7 +48,7 @@ public class TipoDeActividadesActivity extends AppCompatActivity {
         recyclerViewTipoDeActividades.setLayoutManager(layoutManager);
         this.adaptadorDeTipoDeActividades = new AdaptadorTiposDeActividades(tiposDeActividades);
         this.recyclerViewTipoDeActividades.setAdapter(adaptadorDeTipoDeActividades);
-
+        this.recyclerViewTipoDeActividades.addOnItemTouchListener(eventoTouchTiposDeActividades());
     }
 
     /**
@@ -86,6 +89,60 @@ public class TipoDeActividadesActivity extends AppCompatActivity {
         this.cargarTodosLosTiposDeActividades();
         this.adaptadorDeTipoDeActividades = new AdaptadorTiposDeActividades(tiposDeActividades);
         this.recyclerViewTipoDeActividades.setAdapter(adaptadorDeTipoDeActividades);
+        this.recyclerViewTipoDeActividades.addOnItemTouchListener(eventoTouchTiposDeActividades());
+    }
+
+    private RecyclerView.OnItemTouchListener eventoTouchTiposDeActividades() {
+        RecyclerView.OnItemTouchListener evento = new RecyclerView.OnItemTouchListener() {
+
+            /**
+             * Método que se ejecuta al tocar un item del recyclerView Empleados
+             * @param rv : el RecyclerView de la acción
+             * @param e : Animación del recyclerView
+             * @return Evento InterceptTouch.
+             */
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+                View childView = rv.findChildViewUnder(e.getX(), e.getY());
+                if(childView != null && gestureDetector.onTouchEvent(e)) {
+                    int idPosicion = rv.getChildAdapterPosition(childView);
+                    Toast.makeText(TipoDeActividadesActivity.this,
+                            tiposDeActividades.get(idPosicion).getNombre(), Toast.LENGTH_LONG).show();
+                    Intent editarEmpleadoActivity = new Intent(TipoDeActividadesActivity.this,
+                            AgregarTipoDeActividadesActivity.class);
+                    editarEmpleadoActivity.putExtra("tipoDeActividad",
+                            tiposDeActividades.get(idPosicion));
+                    startActivity(editarEmpleadoActivity);
+                    return true;
+                }
+                return false;
+            }
+
+            /**
+             * De momento este método no se está utilizando
+             * @param rv: recyclerView
+             * @param e : Animación.
+             */
+            @Override
+            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+            }
+
+            /**
+             * Método que no está en uso por ahora.
+             * @param disallowIntercept : parámetro de tipo boolean
+             */
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+            }
+            GestureDetector gestureDetector = new GestureDetector(TipoDeActividadesActivity.this,
+                    new GestureDetector.SimpleOnGestureListener() {
+                        @Override public boolean onSingleTapUp(MotionEvent motionEvent) {
+                            return true;
+                        }
+                    }
+            );
+        };
+        return  evento;
     }
 
 

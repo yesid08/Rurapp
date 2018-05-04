@@ -53,6 +53,11 @@ public class AgregarFincaActivity extends AppCompatActivity {
         this.latitud.setText(String.valueOf(finca.getLatitud()));
         this.longitud.setText(String.valueOf(finca.getLongitud()));
         this.descripcion.setText(finca.getDescripcion());
+        this.nombre.setFocusable(false);
+        this.latitud.setFocusable(false);
+        this.longitud.setFocusable(false);
+        this.descripcion.setFocusable(false);
+        this.agregarEditarFincaBoton.setEnabled(false);
     }
 
     private View.OnClickListener eventoClickAgregarEditarBoton(){

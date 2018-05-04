@@ -76,6 +76,16 @@ public class AgregarEmpleadosActivity extends AppCompatActivity {
         this.celular.setText(empleado.getCelular());
         this.valorJornal.setText(String.valueOf(empleado.getValorJornal()));
         this.fechaNacimiento.setText(empleado.getNacimientoString());
+        this.primerNombre.setFocusable(false);
+        this.segundoNombre.setFocusable(false);
+        this.primerApellido.setFocusable(false);
+        this.segundoApellido.setFocusable(false);
+        this.cedula.setFocusable(false);
+        this.salud.setFocusable(false);
+        this.celular.setFocusable(false);
+        this.valorJornal.setFocusable(false);
+        this.fechaNacimiento.setFocusable(false);
+        this.aceptarEditarBoton.setEnabled(false);
     }
 
     private Empleado agregarNuevoEmpleado(){
