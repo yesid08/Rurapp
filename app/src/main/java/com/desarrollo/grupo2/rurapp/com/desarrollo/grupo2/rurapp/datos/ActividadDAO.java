@@ -75,16 +75,15 @@ public class ActividadDAO {
      * metodo para crear actividades
     * */
     //para el estado (char)
-    public Actividad crearActividad(String fechaAsignacion, String fechaRevision, double jornales, String estado, Finca Nfinca,
-                                    TipoDeActividad nTipoActividad, Empleado nEmpleado) {
+    public Actividad crearActividad(Actividad actividad) {
         ContentValues values = new ContentValues();
-        values.put(DbHelper.column_fechaAsignacionActividad, fechaAsignacion);
-        values.put(DbHelper.column_revisionActividad, fechaRevision);
-        values.put(DbHelper.column_jornalesActividad, jornales);
-        values.put(DbHelper.column_estadoActividad, estado);
-        values.put(DbHelper.column_idFinca, Nfinca.getId());///????????????
-        values.put(DbHelper.column_idTipoAtividad, nTipoActividad.getId());
-        values.put(DbHelper.column_idEmpleado, nEmpleado.getIdEmpleado());
+        values.put(DbHelper.column_fechaAsignacionActividad, actividad.getFechaDeAsignacionString());
+        values.put(DbHelper.column_revisionActividad, actividad.getFechaDeRevisionString());
+        values.put(DbHelper.column_jornalesActividad, actividad.getCantidadDeJornales());
+        values.put(DbHelper.column_estadoActividad, actividad.getEstado());
+        values.put(DbHelper.column_idFinca, actividad.getFinca().getId());///????????????
+        values.put(DbHelper.column_idTipoAtividad, actividad.getTipoDeActividad().getId());
+        values.put(DbHelper.column_idEmpleado, actividad.getEmpleado().getIdEmpleado());
         long insertId = mDatabase
                 .insert(DbHelper.tabla_actividad, null, values);
         Cursor cursor = mDatabase.query(DbHelper.tabla_actividad, mAllColumns,
@@ -126,8 +125,8 @@ public class ActividadDAO {
      * @author: Franklin Sierra
      * metodo para listar actividades por finca
      * */
-    public List<Actividad> getActividadesDeFinca(long FincaId) {
-        List<Actividad> listActividad = new ArrayList<Actividad>();
+    public ArrayList<Actividad> getActividadesDeFinca(long FincaId) {
+        ArrayList<Actividad> listActividad = new ArrayList<Actividad>();
 
         Cursor cursor = mDatabase.query(DbHelper.tabla_actividad, mAllColumns,
                 DbHelper.column_idFinca + " = ?",
@@ -147,8 +146,8 @@ public class ActividadDAO {
      * @author: Franklin Sierra
      * metodo para listar actividades por empleado
      * */
-    public List<Actividad> getActividadesDeEmpleado(long EmpleadoId) {
-        List<Actividad> listActividad = new ArrayList<Actividad>();
+    public ArrayList<Actividad> getActividadesDeEmpleado(long EmpleadoId) {
+        ArrayList<Actividad> listActividad = new ArrayList<Actividad>();
 
         Cursor cursor = mDatabase.query(DbHelper.tabla_actividad, mAllColumns,
                 DbHelper.column_idEmpleado + " = ?",
@@ -173,49 +172,39 @@ public class ActividadDAO {
 
 
         String id= String.valueOf(cursor.getLong(0));
-        SimpleDateFormat formato= new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat formato= new SimpleDateFormat("dd/MM/yyyy");
         Date fechaAsignacion;
+        Date fechaRevision;
         try {
             fechaAsignacion= formato.parse((cursor.getString(1)));
         } catch (ParseException e) {
-            fechaAsignacion=null;
+            fechaAsignacion = new Date();
         }
-        SimpleDateFormat formato2= new SimpleDateFormat("yyyy-MM-dd");
-        Date fechaRevision;
+
         try {
-            fechaRevision= formato2.parse((cursor.getString(2)));
+            fechaRevision= formato.parse((cursor.getString(2)));
         } catch (ParseException e) {
-            fechaRevision=null;
+            fechaRevision = new Date();
         }
         Double jornales= (cursor.getDouble(3));
         String estado= (cursor.getString(4));
-
-
         // get The finca by id
         long FincaId = cursor.getLong(5);
         FincaDAO dao = new FincaDAO(mContext);
         Finca finca = dao.getFincaById(FincaId);
-        //if (finca != null)
-            //actividad.setFincaId(finca);
-        //String fincaId= String.valueOf(FincaId);
 
         //get the empleado by id
         long EmpleadoId = cursor.getLong(6);
         EmpleadoDAO dao2 = new EmpleadoDAO(mContext);
         Empleado empleado = dao2.getEmpleadoById(EmpleadoId);
-        //if (empleado != null)
-          //  actividad.setEmpleadoId(empleado);
-        //String empleadoId=String.valueOf(EmpleadoId);
 
         //get the tipo de actividad by id
         long TipoActividadId = cursor.getLong(7);
         TipoDeActividadDAO dao3 = new TipoDeActividadDAO(mContext);
         TipoDeActividad tipoDeActividad = dao3.getTipoDeActividadById(TipoActividadId);
-        //if (tipoDeActividad != null)
-          //  actividad.setTipoActividadId(tipoDeActividad);
-        //String tipoActividadId=String.valueOf(TipoActividadId);
 
-        Actividad actividad = new Actividad(id,fechaAsignacion,fechaRevision,jornales,estado,finca,tipoDeActividad,empleado);
+        Actividad actividad = new Actividad(id,fechaAsignacion,fechaRevision,jornales,estado,
+                finca,tipoDeActividad, empleado);
         return actividad;
     }
 }
