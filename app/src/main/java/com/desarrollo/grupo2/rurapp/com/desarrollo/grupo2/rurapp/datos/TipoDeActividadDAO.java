@@ -139,13 +139,15 @@ public class TipoDeActividadDAO {
     }
 
     protected TipoDeActividad cursorToTipoDeActividad(Cursor cursor){
-        TipoDeActividad TipoActividad = new TipoDeActividad(Parcel.obtain());
+        //TipoDeActividad TipoActividad = new TipoDeActividad(Parcel.obtain());
         //aca debe modificarse el id de finca
         //el problema es el setId deberia ir el siguiente comando:
         //finca.setId(cursor.getLong( i:0 ));
-        TipoActividad.setNombre(cursor.getString(1));
-        TipoActividad.setDescripcion(cursor.getString(2));
+        String id= cursor.getString(0);
+        String nombreTipoActividad= cursor.getString(1);
+        String descripcionTipoActividad= cursor.getString(2);
 
-        return TipoActividad;
+        TipoDeActividad tipoActividad= new TipoDeActividad(id,nombreTipoActividad,descripcionTipoActividad);
+        return tipoActividad;
     }
 }
