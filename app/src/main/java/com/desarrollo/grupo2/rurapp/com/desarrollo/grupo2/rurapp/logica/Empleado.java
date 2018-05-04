@@ -120,6 +120,7 @@ public class Empleado extends Persona implements Parcelable {
         return idEmpleado;
     }
 
+
     /**
      * @author: Yesid A Gutierrez.
      * Método que crea un tipo de actividad apartir de un objeto Parcel

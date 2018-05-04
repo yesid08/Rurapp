@@ -71,6 +71,11 @@ public class TipoDeActividad implements Parcelable {
         this.descripcion = descripcion;
     }
 
+    @Override
+    public String toString() {
+        return this.getNombre();
+    }
+
     /**
      * @author: Yesid A Gutierrez.
      * Método que crea un tipo de actividad apartir de un objeto Parcel

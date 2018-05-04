@@ -228,4 +228,10 @@ public class Persona {
     public void PrimerNombrePrimerApellido(String primerNombre,String primerApelllido){
         System.out.println("El usuario es"+primerNombre+primerApelllido);
     }
+
+    @Override
+    public String toString() {
+        return this.getPrimerNombre()+" "+this.getSegundoNombre()+" "+this.getPrimerApelllido()
+                +" "+ this.getSegundoApellido();
+    }
 }
