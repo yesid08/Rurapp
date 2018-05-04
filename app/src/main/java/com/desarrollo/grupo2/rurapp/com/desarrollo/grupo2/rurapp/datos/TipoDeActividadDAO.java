@@ -66,10 +66,10 @@ public class TipoDeActividadDAO {
      * @author: Franklin Sierra
      * metodo para creacion de cada tipo de actividad
      * */
-    public TipoDeActividad crearTipoDeActividad(String nombre, String descripcion){
+    public TipoDeActividad crearTipoDeActividad(TipoDeActividad tipoDeActividad){
         ContentValues values = new ContentValues();
-        values.put(DbHelper.column_nombTipoActividad, nombre);
-        values.put(DbHelper.column_descriTipoActividad, descripcion);
+        values.put(DbHelper.column_nombTipoActividad, tipoDeActividad.getNombre());
+        values.put(DbHelper.column_descriTipoActividad, tipoDeActividad.getDescripcion());
 
         long insertId = mDatabase
                 .insert(DbHelper.tabla_tipoAct, null, values);
@@ -106,8 +106,8 @@ public class TipoDeActividadDAO {
      * @author: Franklin Sierra
      * listar todas los tipos de actividades
      * */
-    public List<TipoDeActividad> getTodasActividades(){
-        List<TipoDeActividad> TipoActividadList= new ArrayList<>();
+    public ArrayList<TipoDeActividad> getTodasActividades(){
+        ArrayList<TipoDeActividad> TipoActividadList= new ArrayList<>();
 
         Cursor cursor = mDatabase.query(DbHelper.tabla_tipoAct, mTodasColumnas, null, null,
                 null, null, null);
@@ -138,15 +138,15 @@ public class TipoDeActividadDAO {
         return TipoActividad;
     }
 
+    /**
+     * Este método permite devolver un objeto de tipoDeActividad basado en el query ejecutado
+     * @param cursor : el cursor de la base de datos
+     * @return un objeto tipoDeActividad.
+     */
     protected TipoDeActividad cursorToTipoDeActividad(Cursor cursor){
-        //TipoDeActividad TipoActividad = new TipoDeActividad(Parcel.obtain());
-        //aca debe modificarse el id de finca
-        //el problema es el setId deberia ir el siguiente comando:
-        //finca.setId(cursor.getLong( i:0 ));
         String id= cursor.getString(0);
         String nombreTipoActividad= cursor.getString(1);
         String descripcionTipoActividad= cursor.getString(2);
-
         TipoDeActividad tipoActividad= new TipoDeActividad(id,nombreTipoActividad,descripcionTipoActividad);
         return tipoActividad;
     }

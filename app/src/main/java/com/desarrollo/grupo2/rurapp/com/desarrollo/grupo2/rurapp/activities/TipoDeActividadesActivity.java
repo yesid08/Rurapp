@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.desarrollo.grupo2.rurapp.R;
+import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.datos.TipoDeActividadDAO;
 import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.AdaptadorTiposDeActividades;
 import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.TipoDeActividad;
 
@@ -22,6 +23,11 @@ public class TipoDeActividadesActivity extends AppCompatActivity {
     private RecyclerView.Adapter adaptadorDeTipoDeActividades;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<TipoDeActividad> tiposDeActividades;
+
+    protected void onStart(){
+        super.onStart();
+        actualizarRecyclerViewDeTiposDeActividades();
+    }
 
     /**
      * Método que se ejecuta cuando se crea el activity TipoDeActividades.
@@ -69,9 +75,17 @@ public class TipoDeActividadesActivity extends AppCompatActivity {
      * En este método se cargan todos los Tipos de Actividades de la Aplicación
      */
     private void cargarTodosLosTiposDeActividades(){
-        tiposDeActividades.add(
-                new TipoDeActividad("0","Regar","Es una actividad que consiste en hidratar los cultivos")
-        );
+        TipoDeActividadDAO tipoDeActividadDAO = new TipoDeActividadDAO(this);
+        tiposDeActividades = tipoDeActividadDAO.getTodasActividades();
+    }
+
+    private void actualizarRecyclerViewDeTiposDeActividades(){
+        this.tiposDeActividades = new ArrayList<TipoDeActividad>();
+        this.layoutManager = new LinearLayoutManager(this);
+        this.recyclerViewTipoDeActividades.setLayoutManager(layoutManager);
+        this.cargarTodosLosTiposDeActividades();
+        this.adaptadorDeTipoDeActividades = new AdaptadorTiposDeActividades(tiposDeActividades);
+        this.recyclerViewTipoDeActividades.setAdapter(adaptadorDeTipoDeActividades);
     }
 
 
