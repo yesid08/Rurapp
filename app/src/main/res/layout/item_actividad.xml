@@ -7,9 +7,8 @@
 
     <View
         android:id="@+id/divider"
-        android:layout_width="0dp"
+        android:layout_width="384dp"
         android:layout_height="3dp"
-        android:layout_marginTop="8dp"
         android:background="@color/colordefaultinputtext"
         android:visibility="visible"
         app:layout_constraintTop_toTopOf="parent" />
