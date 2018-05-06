@@ -152,7 +152,7 @@ public class DbHelper extends SQLiteOpenHelper {
             " FOREIGN KEY (" + column_actividadIdTipoActividad+ ") REFERENCES " + tabla_tipoAct + "( "
             + column_idTipoAtividad + " ) ON DELETE CASCADE ,"+
             " FOREIGN KEY (" + column_actividadIdFinca + ") REFERENCES " + tabla_finca + "( "
-            + column_idFinca + " ) ); /*ON DELETE CASCADE " ;
+            + column_idFinca + " ) ON DELETE CASCADE );" ;
 
     /**
      * Método que se encarga de hacer una inserción de datos por defecto en la tabla administradores.
