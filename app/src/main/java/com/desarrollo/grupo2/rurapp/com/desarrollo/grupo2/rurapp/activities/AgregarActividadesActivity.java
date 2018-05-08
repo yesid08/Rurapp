@@ -124,6 +124,7 @@ public class AgregarActividadesActivity extends AppCompatActivity {
                 Toast.makeText(AgregarActividadesActivity.this,"Se ha registrado la " +
                         "actividad " +actividad.getTipoDeActividad().getNombre()+"satisfactoriamente"
                         ,Toast.LENGTH_SHORT).show();
+                AgregarActividadesActivity.this.finish();
             }
         };
     }

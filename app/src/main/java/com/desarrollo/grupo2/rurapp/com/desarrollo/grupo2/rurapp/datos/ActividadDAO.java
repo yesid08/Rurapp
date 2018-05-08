@@ -105,8 +105,8 @@ public class ActividadDAO {
      * @author: Franklin Sierra
      * metodo para listar actividades
      * */
-    public List<Actividad> getTodasActividades() {
-        List<Actividad> listActividad = new ArrayList<Actividad>();
+    public ArrayList<Actividad> getTodasActividades() {
+        ArrayList<Actividad> listActividad = new ArrayList<Actividad>();
 
         Cursor cursor = mDatabase.query(DbHelper.tabla_actividad, mAllColumns,
                 null, null, null, null, null);
@@ -194,12 +194,12 @@ public class ActividadDAO {
         Finca finca = dao.getFincaById(FincaId);
 
         //get the empleado by id
-        long EmpleadoId = cursor.getLong(6);
+        long EmpleadoId = cursor.getLong(7);
         EmpleadoDAO dao2 = new EmpleadoDAO(mContext);
         Empleado empleado = dao2.getEmpleadoById(EmpleadoId);
 
         //get the tipo de actividad by id
-        long TipoActividadId = cursor.getLong(7);
+        long TipoActividadId = cursor.getLong(6);
         TipoDeActividadDAO dao3 = new TipoDeActividadDAO(mContext);
         TipoDeActividad tipoDeActividad = dao3.getTipoDeActividadById(TipoActividadId);
 
