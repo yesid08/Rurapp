@@ -81,7 +81,7 @@ public class DbHelper extends SQLiteOpenHelper {
     protected static final String column_jornalesActividad="numeroJornalesActividad";
     protected static final String column_estadoActividad="estadoActividad";
     protected static final String column_actividadIdEmpleado="idEmpleado";
-    protected static final String column_actividadIdTipoActividad="idTipoActividad";
+    protected static final String column_actividadIdTipoActividad="idTipoDeActividad";
     protected static final String column_actividadIdFinca="idFinca";
 
     /**
