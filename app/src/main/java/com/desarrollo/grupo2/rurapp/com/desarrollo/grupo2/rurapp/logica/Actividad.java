@@ -69,7 +69,7 @@ public class Actividad implements Parcelable{
             this.fechaDeAsignacion= new Date();
         }
         try {
-            this.fechaDeRevision=formatter.parse(fechaDeAsignacion);
+            this.fechaDeRevision=formatter.parse(fechaDeRevision);
         }
         catch (ParseException e) {
             this.fechaDeRevision= new Date();

@@ -87,7 +87,7 @@ public class ActividadDAO {
         long insertId = mDatabase
                 .insert(DbHelper.tabla_actividad, null, values);
         Cursor cursor = mDatabase.query(DbHelper.tabla_actividad, mAllColumns,
-                DbHelper.tabla_actividad + " = " + insertId, null, null,
+                DbHelper.column_idActividad + " = " + insertId, null, null,
                 null, null);
         cursor.moveToFirst();
         Actividad newActividad = cursorToActividad(cursor);
