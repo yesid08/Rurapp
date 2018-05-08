@@ -64,6 +64,9 @@ public class AgregarActividadesActivity extends AppCompatActivity {
         cargarFincasSpinner();
     }
 
+    /**
+     * Método utilizado para cargar todos los empleados en el spinner.
+     */
     private void cargarEmpleadosSpinner(){
         if (this.empleados != null){
             this.listaDesplegableEmpleados.setAdapter(new ArrayAdapter<Empleado>(this,
@@ -71,6 +74,9 @@ public class AgregarActividadesActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Método utilizado para cargar todos los tipos de actividades en el spinner.
+     */
     private void cargarTiposDeActividadesSpinner(){
         if(this.tipoDeActividades != null){
             this.listaDesplegableTipoDeActividad.setAdapter(new ArrayAdapter<TipoDeActividad>(this,
@@ -78,6 +84,9 @@ public class AgregarActividadesActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Método utilizado para cargar todas las fincas en el spinner
+     */
     private void cargarFincasSpinner(){
         if(this.fincas != null){
             this.listaDesplegableFincas.setAdapter(new ArrayAdapter<Finca>(this,
@@ -85,6 +94,10 @@ public class AgregarActividadesActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Método que devuelve una actividad la cual se crea a partir de los datos contenidos en el layout.
+     * @return una Actividad.
+     */
     private Actividad crearNuevaActividad(){
         return new Actividad(
                 "",
@@ -98,6 +111,10 @@ public class AgregarActividadesActivity extends AppCompatActivity {
                 );
     }
 
+    /**
+     * Evento de tipo OnClick que se ejecuta al presionar el botón de aceptar o editar.
+     * @return
+     */
     private View.OnClickListener eventoAgregarEditarActividad(){
         return new View.OnClickListener() {
             @Override
