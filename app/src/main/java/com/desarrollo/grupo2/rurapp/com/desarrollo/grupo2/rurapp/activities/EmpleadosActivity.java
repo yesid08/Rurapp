@@ -29,6 +29,9 @@ public class EmpleadosActivity extends AppCompatActivity {
     private ArrayList<Empleado> empleados;
 
 
+    /**
+     * Método que se ejecuta cada vez que el activity es visible al usuario.
+     */
     protected void onStart() {
         super.onStart();
         actualizarRecyclerViewEmpleados();
@@ -94,9 +97,8 @@ public class EmpleadosActivity extends AppCompatActivity {
                 View childView = rv.findChildViewUnder(e.getX(), e.getY());
                 if(childView != null && gestureDetector.onTouchEvent(e)) {
                     int idPosicion = rv.getChildAdapterPosition(childView);
-                    Toast.makeText(EmpleadosActivity.this,
-                            empleados.get(idPosicion).getPrimerNombre(), Toast.LENGTH_LONG).show();
-                    Intent editarEmpleadoActivity = new Intent(EmpleadosActivity.this, AgregarEmpleadosActivity.class);
+                    Intent editarEmpleadoActivity = new Intent(EmpleadosActivity.this,
+                            AgregarEmpleadosActivity.class);
                     editarEmpleadoActivity.putExtra("empleado",empleados.get(idPosicion));
                     startActivity(editarEmpleadoActivity);
                     return true;
@@ -137,9 +139,12 @@ public class EmpleadosActivity extends AppCompatActivity {
     private void cargarTodosLosEmpleados() {
         EmpleadoDAO empleadoDao = new EmpleadoDAO(this);
         empleados = empleadoDao.getTodosEmpleados();
-
     }
 
+    /**
+     * Método que se encarga de recargar el recyclerView a fin de buscar si se hicieron cambios en la
+     * base de datos de la app.
+     */
     private void actualizarRecyclerViewEmpleados(){
         empleados = new ArrayList<Empleado>();
         cargarTodosLosEmpleados();

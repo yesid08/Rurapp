@@ -27,6 +27,9 @@ public class TipoDeActividadesActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<TipoDeActividad> tiposDeActividades;
 
+    /**
+     * Método que se ejecuta cada vez que el activity tiposDeActividades es visible para el usuario.
+     */
     protected void onStart(){
         super.onStart();
         actualizarRecyclerViewDeTiposDeActividades();
@@ -82,6 +85,10 @@ public class TipoDeActividadesActivity extends AppCompatActivity {
         tiposDeActividades = tipoDeActividadDAO.getTodasActividades();
     }
 
+    /**
+     * Método que se utiliza para mostrar gráficamente los últimos cambios en la tabla
+     * Tipo de actividades y reflejarlos en el recyclerView.
+     */
     private void actualizarRecyclerViewDeTiposDeActividades(){
         this.tiposDeActividades = new ArrayList<TipoDeActividad>();
         this.layoutManager = new LinearLayoutManager(this);
@@ -106,8 +113,6 @@ public class TipoDeActividadesActivity extends AppCompatActivity {
                 View childView = rv.findChildViewUnder(e.getX(), e.getY());
                 if(childView != null && gestureDetector.onTouchEvent(e)) {
                     int idPosicion = rv.getChildAdapterPosition(childView);
-                    Toast.makeText(TipoDeActividadesActivity.this,
-                            tiposDeActividades.get(idPosicion).getNombre(), Toast.LENGTH_LONG).show();
                     Intent editarEmpleadoActivity = new Intent(TipoDeActividadesActivity.this,
                             AgregarTipoDeActividadesActivity.class);
                     editarEmpleadoActivity.putExtra("tipoDeActividad",

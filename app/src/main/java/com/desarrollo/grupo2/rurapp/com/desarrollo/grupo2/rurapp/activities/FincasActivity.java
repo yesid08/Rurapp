@@ -27,6 +27,9 @@ public class FincasActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Finca> fincas;
 
+    /**
+     * Método que se ejecuta cada vez que el activity fincas es visible para el usuario.
+     */
     protected void onStart(){
         super.onStart();
         actualizarRecyclerViewFincas();
@@ -84,6 +87,10 @@ public class FincasActivity extends AppCompatActivity {
         this.fincas =  fincaDAO.getTodasFincas();
     }
 
+    /**
+     * Método que se encarga de actualizar el recyclerView a fin de mostrar los últimos cambios
+     * de la tabla fincas en la base de datos de la app.
+     */
     private void actualizarRecyclerViewFincas(){
         fincas = new ArrayList<Finca>();
         cargarTodasLasFincas();
@@ -109,13 +116,17 @@ public class FincasActivity extends AppCompatActivity {
                     }
             );
 
+            /**
+             *Método que se ejecuta al tocar un item del recyclerView.
+             * @param rv : el recyclerView
+             * @param e : EventoDeAnimación.
+             * @return : verdadero si se ejecuta falso si no.
+             */
             @Override
             public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
                 View childView = rv.findChildViewUnder(e.getX(), e.getY());
                 if(childView != null && gestureDetector.onTouchEvent(e)) {
                     int idPosicion = rv.getChildAdapterPosition(childView);
-                    Toast.makeText(FincasActivity.this, fincas.get(idPosicion).getNombre(),
-                            Toast.LENGTH_SHORT).show();
                     Intent editarFinca = new Intent(FincasActivity.this,AgregarFincaActivity.class);
                     editarFinca.putExtra("finca",fincas.get(idPosicion));
                     startActivity(editarFinca);
@@ -124,10 +135,19 @@ public class FincasActivity extends AppCompatActivity {
                 return false;
             }
 
+            /**
+             * Este método no está en uso...
+             * @param rv : El recyclerView
+             * @param e : El evento.
+             */
             @Override
             public void onTouchEvent(RecyclerView rv, MotionEvent e) {
             }
 
+            /**
+             * Este método tampoco está en uso.
+             * @param disallowIntercept : un booleano.
+             */
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
