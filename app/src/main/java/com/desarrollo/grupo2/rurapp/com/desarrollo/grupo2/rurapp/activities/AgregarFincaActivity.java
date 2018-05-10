@@ -19,10 +19,12 @@ public class AgregarFincaActivity extends AppCompatActivity {
     private EditText descripcion;
     private Finca finca;
     private Button agregarEditarFincaBoton;
+    private Button cancelarAgregarFinca;
     private boolean editarFinca;
 
     /**
      * Método que inicializa todos los View de la activity AgregarFincas
+     *
      * @param savedInstanceState : estado de la activity.
      */
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +36,13 @@ public class AgregarFincaActivity extends AppCompatActivity {
         this.descripcion = findViewById(R.id.editText4);
         this.agregarEditarFincaBoton = findViewById(R.id.button1);
         this.agregarEditarFincaBoton.setOnClickListener(eventoClickAgregarEditarBoton());
+        this.cancelarAgregarFinca = findViewById(R.id.button2);
+        this.cancelarAgregarFinca.setOnClickListener(eventoClickCancelarBoton());
         this.finca = getIntent().getParcelableExtra("finca");
-        if(finca != null){
+        if (finca != null) {
             this.editarFinca = true;
             utilizarInfomacionFincas();
-        }
-        else {
+        } else {
             this.editarFinca = false;
         }
     }
@@ -48,7 +51,7 @@ public class AgregarFincaActivity extends AppCompatActivity {
      * Método que permite cargar el formulario con la información de la finca
      * que se desdea editar.
      */
-    private void utilizarInfomacionFincas(){
+    private void utilizarInfomacionFincas() {
         this.nombre.setText(finca.getNombre());
         this.latitud.setText(String.valueOf(finca.getLatitud()));
         this.longitud.setText(String.valueOf(finca.getLongitud()));
@@ -60,20 +63,43 @@ public class AgregarFincaActivity extends AppCompatActivity {
         this.agregarEditarFincaBoton.setEnabled(false);
     }
 
-    private View.OnClickListener eventoClickAgregarEditarBoton(){
+    /**
+     * Evento Onclick que se ejecuta al presionar el botón de aceptar o editar.
+     *
+     * @return : evento Onclick
+     */
+    private View.OnClickListener eventoClickAgregarEditarBoton() {
         View.OnClickListener evento = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Finca finca = agregarNuevaFinca();
                 Toast.makeText(AgregarFincaActivity.this, "Se ha registrado " +
-                        "satisfactoriamente la finca "+finca.getNombre(),Toast.LENGTH_SHORT)
-                .show();
+                        "satisfactoriamente la finca " + finca.getNombre(), Toast.LENGTH_SHORT)
+                        .show();
                 AgregarFincaActivity.this.finish();
             }
         };
         return evento;
     }
 
+    /**
+     * Método que se ejecuta al presionar el botón de cancelar.
+     *
+     * @return Evento de tipo OnClickListener.
+     */
+    private View.OnClickListener eventoClickCancelarBoton() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AgregarFincaActivity.this.finish();
+            }
+        };
+    }
+
+    /**
+     * Método que permite registrar una finca en la base de datos de la app.
+     * @return : Objeto de tipo finca el cual se registró en la base de datos.
+     */
     private Finca agregarNuevaFinca () {
         Finca finca = new Finca(
                 "1",
