@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.desarrollo.grupo2.rurapp.R;
 import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.datos.EmpleadoDAO;
+import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.AdaptadorActividades;
 import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.AdaptadorFincas;
 import com.desarrollo.grupo2.rurapp.com.desarrollo.grupo2.rurapp.logica.Empleado;
 
@@ -29,6 +30,7 @@ public class AgregarEmpleadosActivity extends AppCompatActivity {
     private EditText celular;
     private EditText valorJornal;
     private Button aceptarEditarBoton;
+    private Button cancelarEmpleadoBoton;
     private boolean editarEmpleado;
 
     /**
@@ -49,6 +51,8 @@ public class AgregarEmpleadosActivity extends AppCompatActivity {
         this.fechaNacimiento = findViewById(R.id.editText9);
         this.aceptarEditarBoton = findViewById(R.id.button1);
         this.aceptarEditarBoton.setOnClickListener(eventoBotonAgregarEditarEmpleado());
+        this.cancelarEmpleadoBoton = findViewById(R.id.button2);
+        this.cancelarEmpleadoBoton.setOnClickListener(eventoCancelarBoton());
         this.empleado = getIntent().getParcelableExtra("empleado");
         this.valorJornal.setText("0");
         // Si el empleado es nulo es porque la activity se abrió para agregar un nuevo empleado
@@ -88,6 +92,10 @@ public class AgregarEmpleadosActivity extends AppCompatActivity {
         this.aceptarEditarBoton.setEnabled(false);
     }
 
+    /**
+     * Método que registra un empleado en la base de datos de la app.
+     * @return El empleado que se agregó en la base de datos.
+     */
     private Empleado agregarNuevoEmpleado(){
         empleado = new Empleado(
                 "",
@@ -107,6 +115,10 @@ public class AgregarEmpleadosActivity extends AppCompatActivity {
         return empleadoRetorno;
     }
 
+    /**
+     * Método que se ejecuta al presionar el botón de agregar o editar empleado.
+     * @return Evento onClick.
+     */
     private View.OnClickListener eventoBotonAgregarEditarEmpleado(){
         View.OnClickListener evento = new View.OnClickListener() {
             @Override
@@ -118,5 +130,18 @@ public class AgregarEmpleadosActivity extends AppCompatActivity {
             }
         };
         return  evento;
+    }
+
+    /**
+     * Método que se ejecuta al presionar el botón de cancelar.
+     * @return: Evento OnClickListener.
+     */
+    private View.OnClickListener eventoCancelarBoton(){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AgregarEmpleadosActivity.this.finish();
+            }
+        };
     }
 }
