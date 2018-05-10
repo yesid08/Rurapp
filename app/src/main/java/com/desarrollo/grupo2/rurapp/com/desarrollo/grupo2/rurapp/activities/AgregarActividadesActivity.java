@@ -33,6 +33,7 @@ public class AgregarActividadesActivity extends AppCompatActivity {
     private Spinner listaDesplegableFincas;
     private EditText cantidadDeJornales;
     private Button agregarEditarActividad;
+    private Button cancelarActividadBoton;
     private ArrayList<Empleado> empleados;
     private ArrayList<TipoDeActividad> tipoDeActividades;
     private ArrayList<Finca> fincas;
@@ -53,6 +54,8 @@ public class AgregarActividadesActivity extends AppCompatActivity {
         this.cantidadDeJornales.setText("0");
         this.agregarEditarActividad = findViewById(R.id.button1);
         this.agregarEditarActividad.setOnClickListener(eventoAgregarEditarActividad());
+        this.cancelarActividadBoton  = findViewById(R.id.button6);
+        this.cancelarActividadBoton.setOnClickListener(eventoCancelarActividad());
         EmpleadoDAO empleadoDAO = new EmpleadoDAO(this);
         TipoDeActividadDAO tipoDeActividadDAO = new TipoDeActividadDAO(this);
         FincaDAO fincasDAO = new FincaDAO(this);
@@ -124,6 +127,20 @@ public class AgregarActividadesActivity extends AppCompatActivity {
                 Toast.makeText(AgregarActividadesActivity.this,"Se ha registrado la " +
                         "actividad " +actividad.getTipoDeActividad().getNombre()+"satisfactoriamente"
                         ,Toast.LENGTH_SHORT).show();
+                AgregarActividadesActivity.this.finish();
+            }
+        };
+    }
+
+    /**
+     * Método que se encarga de definir el evento que ocurre cuando se presiona el botón de cancelar
+     * en la activity AgregarActividades.
+     * @return : evento OnclickListener.
+     */
+    private View.OnClickListener eventoCancelarActividad(){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 AgregarActividadesActivity.this.finish();
             }
         };
