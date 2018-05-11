@@ -65,6 +65,10 @@ public class AgregarActividadesActivity extends AppCompatActivity {
         cargarEmpleadosSpinner();
         cargarTiposDeActividadesSpinner();
         cargarFincasSpinner();
+        Actividad actividad = getIntent().getParcelableExtra("actividad");
+        if(actividad != null){
+            utilizarInformacionActividades(actividad);
+        }
     }
 
     /**
@@ -144,5 +148,43 @@ public class AgregarActividadesActivity extends AppCompatActivity {
                 AgregarActividadesActivity.this.finish();
             }
         };
+    }
+
+    /**
+     * Método que se encarga de leer los datos de una actividad y en caso de encontrarla
+     * se encargará de asignar todos los valores de dicha actividad a nuestro activity.
+     * @param actividad : la actividad que se encontró.
+     */
+    private void utilizarInformacionActividades(Actividad actividad){
+        this.fechaRevision.setText(actividad.getFechaDeRevisionString());
+        this.fechaRevision.setFocusable(false);
+        this.fechaAsignacion.setText(actividad.getFechaDeAsignacionString());
+        this.fechaAsignacion.setFocusable(false);
+        this.cantidadDeJornales.setText(String.valueOf(actividad.getCantidadDeJornales()));
+        this.cantidadDeJornales.setFocusable(false);
+        this.listaDesplegableEmpleados.setSelection(obtenerPosicionDelSpinner(
+                listaDesplegableEmpleados,actividad.getEmpleado()));
+        this.listaDesplegableTipoDeActividad.setSelection(obtenerPosicionDelSpinner(
+                listaDesplegableTipoDeActividad,actividad.getTipoDeActividad()));
+        this.listaDesplegableFincas.setSelection(obtenerPosicionDelSpinner(
+                listaDesplegableFincas,actividad.getFinca()));
+        this.agregarEditarActividad.setEnabled(false);
+    }
+
+    /**
+     * Método que se encarga de buscar si el elemento requerido está y su posición
+     * @param lista : El spinner donde se quiere buscar el elemento.
+     * @param objeto : El elemento que se quiere buscar.
+     * @return La posición donde se encuentra el elemento, elige 0 por defecto si no la encuentra.
+     */
+    private int obtenerPosicionDelSpinner(Spinner lista , Object objeto ){
+        int posicion = 0;
+        for (int i = 0 ; i < lista.getCount() ; i ++){
+            if(lista.getItemAtPosition(i).toString().equalsIgnoreCase(objeto.toString())){
+                posicion = i;
+                break;
+            }
+        }
+        return posicion;
     }
 }
